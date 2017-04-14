@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/networking/get-started-overlay/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/networking/get-started-overlay.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/networking/get-started-overlay.md
-.. check date: 2016/04/17
+.. check date: 2016/06/14
 .. Commits on Feb 25, 2016 db5ded0dfc28c71276acf8500fabe3c64c15fbe1
 .. ---------------------------------------------------------------------------
 
@@ -124,7 +124,7 @@ Docker マルチホスト・ネットワーク機能を使うために、Docker 
 .. _step2-create-a-swarm-cluster:
 
 ステップ２：Swarm クラスタの作成
-==============================
+================================
 
 .. In this step, you use docker-machine to provision the hosts for your network. At this point, you won’t actually create the network. You’ll create several machines in VirtualBox. One of the machines will act as the Swarm master; you’ll create that first. As you create each host, you’ll pass the Engine on that machine options that are needed by the overlay network driver.
 
@@ -187,7 +187,7 @@ Docker マルチホスト・ネットワーク機能を使うために、Docker 
 .. _step3-create-the-overlay-network:
 
 ステップ３：オーバレイ・ネットワークの作成
-========================================
+==========================================
 
 .. To create an overlay network
 

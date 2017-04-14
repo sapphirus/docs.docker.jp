@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/volume_ls/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/volume_ls.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/volume_ls.md
-.. check date: 2016/04/28
+.. check date: 2016/06/16
 .. Commits on Mar 25, 2016 8e9305ef946843ce2f8ef47909d6a866eab5dfa8
 .. -------------------------------------------------------------------
 
@@ -15,16 +15,16 @@ volume ls
 
 .. code-block:: bash
 
-   Usage: docker volume ls [OPTIONS]
+   使い方: docker volume ls [オプション]
    
-   List volumes
+   ボリュームの一覧
    
-     -f, --filter=[]      Filter output based on these conditions:
-                          - dangling=<boolean> a volume if referenced or not
-                          - driver=<string> a volume's driver name
-                          - name=<string> a volume's name
-     --help               Print usage
-     -q, --quiet          Only display volume names
+     -f, --filter=[]      次の状況に応じて出力フィルタ:
+                          - dangling=<boolean> ボリュームが参照されているかどうか
+                          - driver=<string> ボリュームのドライバ名
+                          - name=<string> ボリューム名
+     --help               使い方の表示
+     -q, --quiet          ボリューム名のみ表示
 
 .. Lists all the volumes Docker knows about. You can filter using the -f or --filter flag. The filtering format is a key=value pair. To specify more than one filter, pass multiple flags (for example, --filter "foo=bar" --filter "bif=baz")
 
@@ -67,7 +67,7 @@ Docker が把握している全てのボリュームを表示します。 ``-f``
 
 .. The currently supported filters are:
 
-現時点でサポートされているフィルタ：
+現時点でサポートしているフィルタ：
 
 ..    dangling (boolean - true or false, 0 or 1)
     driver (a volume driver's name)

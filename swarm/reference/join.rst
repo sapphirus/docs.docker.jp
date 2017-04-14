@@ -33,7 +33,7 @@ Swarm ノードを作成するには、次の構文を使います。
 
 .. For example, to create a Swarm node in a high-availability cluster with other managers, enter:
 
-例えば、Swarm ノードを高可用性クラスタを持つマネージャに接続には、次のように実行します。
+例えば、Swarm ノードを高可用性クラスタ対応マネージャに接続するには、次のように実行します。
 
 .. code-block:: bash
 
@@ -67,7 +67,7 @@ Swarm ノードを作成する前に、 :doc:`ディスカバリ・トークン�
 
 .. When you create the Swarm node, use the <discovery> argument to specify one of the following discovery backends:
 
-`Swarm ノードの作成時、 ``<discovery>`` 引数を使って以下のバックエンドを指定可能です。
+Swarm ノードの作成時、 ``<discovery>`` 引数を使って以下のバックエンドを指定可能です。
 
 * ``token://<token>``
 * ``consul://<ip1>/<path>``
@@ -165,7 +165,7 @@ Swarm ノードを作成する前に、 :doc:`ディスカバリ・トークン�
 
 .. Use --delay "<interval>s" to specify the maximum interval for a random delay, in seconds, before the node registers with the discovery backend. If you deploy a large number of nodes simultaneously, the random delay spreads registrations out over the interval and avoids saturating the discovery backend.
 
-``--delay "間隔<s>"`` の形式で、ディスカバリバックエンドがノードを登録するまで、ランダムに遅延させる最大秒数を指定します。多数のノードをデプロイするとき、ランダムに登録間隔の遅延を発生する事で、ディスカバリ・バックエンドが飽和しないように（応答しなくならないように）します。
+``--delay "間隔<s>"`` の形式で、ディスカバリバックエンドがノードを登録するまで、ランダムに遅延させる最大秒数を指定します。多数のノードをデプロイする時、ランダムに登録間隔の遅延を発生することで、ディスカバリ・バックエンドが飽和しないように（応答不能にならないように）します。
 
 .. --discovery-opt — Discovery options
 

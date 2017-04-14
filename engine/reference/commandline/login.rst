@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/login/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/login.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/login.md
-.. check date: 2016/04/28
+.. check date: 2016/06/12
 .. Commits on Mar 14, 2016 b9361f02da25108af75238093959634e433d72a0
 .. -------------------------------------------------------------------
 
@@ -15,15 +15,15 @@ login
 
 .. code-block:: bash
 
-   Usage: docker login [OPTIONS] [SERVER]
+   使い方: docker login [オプション] [サーバ]
    
-   Register or log in to a Docker registry server, if no server is
-   specified "https://index.docker.io/v1/" is the default.
+   Docker レジストリ・サーバに登録またはログインする
+   サーバの指定が無ければデフォルトで "https://index.docker.io/v1/" を使用
    
-     -e, --email=""       Email
-     --help               Print usage
-     -p, --password=""    Password
-     -u, --username=""    Username
+     -e, --email=""       メールアドレス
+     --help               使い方の表示
+     -p, --password=""    パスワード
+     -u, --username=""    ユーザ名
    
 .. If you want to login to a self-hosted registry you can specify this by adding the server name.
 
@@ -44,18 +44,18 @@ login
 ..    connecting to a remote daemon, such as a docker-machine provisioned docker engine.
 ..    user is added to the docker group. This will impact the security of your system; the docker group is root equivalent. See Docker Daemon Attack Surface for details.
 
-1. ``docker-machine`` を使って ``docker engine`` を自動設定したようなリモート・デーモンに接続時。
+1. ``docker-machine`` を使い、 ``docker engine`` を自動設定したようなリモート・デーモンに接続時。
 2. ``docker`` グループに追加されたユーザ。システム上のセキュリティ・リスクになります。 ``docker`` グループは ``root`` と同等のためです。詳細は :ref:`Docker デーモンが直面する攻撃 <docker-daemon-attack-surface>` をご覧ください。
 
 .. You can log into any public or private repository for which you have credentials. When you log in, the command stores encoded credentials in $HOME/.docker/config.json on Linux or %USERPROFILE%/.docker/config.json on Windows.
 
-証明書（credential）があれば、あらゆるパブリックないしプライベートなリポジトリにログインできます。ログインすると、コマンドは符号化（エンコード）した証明書を Linux であれば ``$HOME/.docker/config.json`` に、Windows であれば ``%USERPROFILE%/.docker/config.json`` に保管します。
+証明書（credential）があれば、あらゆるパブリックないしプライベートなリポジトリにログインできます。ログインしたら、コマンドは符号化（エンコード）した証明書を Linux であれば ``$HOME/.docker/config.json`` に、Windows であれば ``%USERPROFILE%/.docker/config.json`` に保管します。
 
 ..    Note: When running sudo docker login credentials are saved in /root/.docker/config.json.
 
 .. note::
 
-   ``sudo docker login`` を実行すると、証明書は ``/root/.docker/config.json`` に保管されます。
+   ``sudo docker login`` を実行したら、証明書は ``/root/.docker/config.json`` に保管されます。
 
 .. Credentials store
 
@@ -114,7 +114,7 @@ Docker Engine はユーザの証明書（credential）を外部の証明書ス�
 
 .. The helpers always use the first argument in the command to identify the action. There are only three possible values for that argument: store, get, and erase.
 
-ヘルパーはコマンドのアクションを決めるため、常に１番目の引数を使います。ここで利用可能な引数とは ``store``  ``get`` ``erase`` のいずれかです。
+ヘルパーはコマンドのアクションを決めるため、常に１番めの引数を使います。ここで利用可能な引数とは ``store``  ``get`` ``erase`` のいずれかです。
 
 .. The store command takes a JSON payload from the standard input. That payload carries the server address, to identify the credential, the user name, and either a password or an identity token.
 

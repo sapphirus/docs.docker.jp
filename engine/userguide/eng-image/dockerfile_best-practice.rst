@@ -69,7 +69,7 @@ Docker は ``Dockerfile`` の命令を読み込み、自動的にイメージを
 
 .. In order to reduce complexity, dependencies, file sizes, and build times, you should avoid installing extra or unnecessary packages just because they might be “nice to have.” For example, you don’t need to include a text editor in a database image.
 
-複雑さ、依存関係、ファイルサイズ、構築階数をそれぞれ減らすために、余分ないし不必要な「入れた方が良いだろう」というパッケージは、インストールを避けるべきです。例えば、データベース・イメージであればテキストエディタは不要でしょう。
+複雑さ、依存関係、ファイルサイズ、構築時間をそれぞれ減らすために、余分ないし不必要な「入れた方が良いだろう」というパッケージは、インストールを避けるべきです。例えば、データベース・イメージであればテキストエディタは不要でしょう。
 
 .. Run only one process per container
 
@@ -87,7 +87,7 @@ Docker は ``Dockerfile`` の命令を読み込み、自動的にイメージを
 
 .. You need to find the balance between readability (and thus long-term maintainability) of the Dockerfile and minimizing the number of layers it uses. Be strategic and cautious about the number of layers you use.
 
-``Dockerfile`` の読みやすさと、使用するイメージレイヤ数の最小化は。両者のバランスを見つける必要があります。戦略的に注意深くレイヤ数をお使いください。
+``Dockerfile`` の読みやすさと、使用するイメージレイヤ数の最小化は、両者のバランスを見つける必要があります。戦略的に注意深くレイヤ数をお使いください。
 
 .. Sort multi-line arguments
 
@@ -224,7 +224,7 @@ RUN
 
 .. Docker sees the initial and modified instructions as identical and reuses the cache from previous steps. As a result the apt-get update is NOT executed because the build uses the cached version. Because the apt-get update is not run, your build can potentially get an outdated version of the curl and nginx packages.
 
-Docker は冒頭からファイルを読み込み、命令の変更を認識したら、全開に作成したキャッシュを再利用します。つまり、 ``apt-get update`` は *決して* 実行されず、キャッシュされたバージョンを使います。これは ``apt-get update`` を更新していないため、古いバージョンの ``curl`` と ``nginx`` パッケージを取得する恐れがあります。
+Docker は冒頭からファイルを読み込み、命令の変更を認識したら、前回に作成したキャッシュを再利用します。つまり、 ``apt-get update`` は *決して* 実行されず、キャッシュされたバージョンを使います。これは ``apt-get update`` を更新していないため、古いバージョンの ``curl`` と ``nginx`` パッケージを取得する恐れがあります。
 
 .. Using RUN apt-get update && apt-get install -y ensures your Dockerfile installs the latest package versions with no further coding or manual intervention. This technique is known as “cache busting”. You can also achieve cache-busting by specifying a package version. This is known as version pinning, for example:
 
@@ -403,7 +403,7 @@ ENTRYPOINT
 
 .. Dockerfile reference for the ENTRYPOINT instruction
 
-:ref:`Dockerfile リファレンスの ENTRYPOINT 命令 <copy>`
+:ref:`Dockerfile リファレンスの ENTRYPOINT 命令 <entrypoint>`
 
 .. The best use for ENTRYPOINT is to set the image’s main command, allowing that image to be run as though it was that command (and then use CMD as the default flags).
 

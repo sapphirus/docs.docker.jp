@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/ps/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/ps.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/ps.md
-.. check date: 2016/04/28
-.. Commits on Mar 15, 2016 b1619766c0131a02774c7ec2b158c2fdf7206d05
+.. check date: 2016/06/16
+.. Commits on Jun 7, 2016 7c46ba02e694ae540866b29ebf0dab76e556cc13
 .. -------------------------------------------------------------------
 
 .. ps
@@ -13,40 +13,41 @@
 ps
 =======================================
 
+.. code-block:: bash
+
+   使い方: docker ps [オプション]
+   
+   コンテナの一覧
+   
+     -a, --all             全てのコンテナを表示 (デフォルトは実行中コンテナのみ表示)
+     -f, --filter=[]       以下の状況に応じて出力をフィルタ:
+                           - exited=<整数> 終了コードを <整数> で指定
+                           - label=<key> または label=<key>=<value>
+                           - status=(created|restarting|running|paused|exited)
+                           - name=<文字列> コンテナ名
+                           - id=<ID> コンテナ ID
+                           - before=(<コンテナ名>|<コンテナID>)
+                           - since=(<コンテナ名>|<コンテナID>)
+                           - ancestor=(<イメージ名>[:タグ]|<イメージID>|<イメージ@ダイジェスト値>) - 特定のイメージや子孫から作成されたコンテナ
+                           - volume=(<ボリューム名>|<マウント・ポイント>)
+     --format=[]           Go テンプレートを使いコンテナの表示を整形
+     --help                使い方の表示
+     -l, --latest          最後に作成したコンテナを表示 (どのような状態でも)
+     -n=-1                 直近で作成した n コンテナを表示 (どのような状態でも)
+     --no-trunc            トランケート (truncate) を出力しない
+     -q, --quiet           整数値の ID のみ表示
+     -s, --size            合計ファイルサイズを表示
+
 .. sidebar:: 目次
 
    .. contents:: 
        :depth: 3
        :local:
 
-.. code-block:: bash
-
-   Usage: docker ps [OPTIONS]
-   
-   List containers
-   
-     -a, --all             Show all containers (default shows just running)
-     -f, --filter=[]       Filter output based on these conditions:
-                           - exited=<int> an exit code of <int>
-                           - label=<key> or label=<key>=<value>
-                           - status=(created|restarting|running|paused|exited)
-                           - name=<string> a container's name
-                           - id=<ID> a container's ID
-                           - before=(<container-name>|<container-id>)
-                           - since=(<container-name>|<container-id>)
-                           - ancestor=(<image-name>[:tag]|<image-id>|<image@digest>) - containers created from an image or a descendant.
-                           - volume=(<volume-name>|<mount-point>)
-     --format=[]           Pretty-print containers using a Go template
-     --help                Print usage
-     -l, --latest          Show the latest created container (includes all states)
-     -n=-1                 Show n last created containers (includes all states)
-     --no-trunc            Don't truncate output
-     -q, --quiet           Only display numeric IDs
-     -s, --size            Display total file sizes
 
 .. Running docker ps --no-trunc showing 2 linked containers.
 
-``docker ps --no-trunc`` を実行すると、リンクされた２つのコンテナが表示されます。
+``docker ps --no-trunc`` を実行すると、リンクされた２つのコンテナを表示します。
 
 .. code-block:: bash
 
@@ -76,7 +77,7 @@ ps
 
 .. The currently supported filters are:
 
-現在、以下のフィルタがサポートされています。
+現在、以下のフィルタをサポートします。
 
 ..    id (container’s id)
     label (label=<key> or label=<key>=<value>)
@@ -84,12 +85,23 @@ ps
     exited (int - the code of exited containers. Only useful with --all)
     status (created|restarting|running|paused|exited|dead)
     ancestor (<image-name>[:<tag>], <image id> or <image@digest>) - filters containers that were created from the given image or a descendant.
+   before (container's id or name) - filters containers created before given id or name
+   since (container's id or name) - filters containers created since given id or name
+   isolation (default|process|hyperv) (Windows daemon only)
+   volume (volume name or mount point) - filters containers that mount volumes.
+   network (network id name) - filters containers connected to the provided network
 
-* ID（コンテナの ID）
-* ラベル（ ``label=<key>`` か ``label=<key>=<value>`` ）
-* 名前（コンテナの名前）
-* 終了コード（整数値 - コンテナの終了コード。実用的なのは ``--all``）
-* 先祖/ancestor（ ``<イメージ名>[:<タグ>]`` 、 ``<イメージID>`` 、 ``<イメージ@digest>`` ） - 特定のイメージから作られた子コンテナを作成します。
+* id（コンテナの ID）
+* label（ ``label=<key>`` か ``label=<key>=<value>`` ）
+* name（コンテナの名前）
+* exited（整数値 - コンテナの終了コード。実用的なのは ``--all``）
+* status（created|restarting|running|paused|exited|dead）
+* ancestor（ ``<イメージ名>[:<タグ>]`` 、 ``<イメージID>`` 、 ``<イメージ@digest>`` ） - 特定のイメージから作られた子コンテナを作成します。
+* before（コンテナ ID か名前） - 指定した ID か名前よりも前に作成したコンテナでフィルタ
+* since（コンテナ ID か名前） - 指定した ID か名前よりも後に作成したコンテナでフィルタ
+* isolation （default|process|hyperv）（Windows デーモンのみ）
+* volume（ボリューム名かマウントポイント） - コンテナがマウントしているボリュームでフィルタ
+* network（ネットワーク ID か名前）- コンテナが接続しているネットワークでフィルタ
 
 .. Label
 
@@ -104,7 +116,7 @@ label
 
 .. The following filter matches containers with the color label regardless of its value.
 
-次のフィルタは、 ``color`` ラベルがどのような値を持っているかに関わらず、一致するものを表示します。
+次のフィルタは、 ``color`` ラベルがどのような値を持っているかに拘わらず、一致するものを表示します。
 
 .. code-block:: bash
 
@@ -132,7 +144,7 @@ name
 
 .. The name filter matches on all or part of a container’s name.
 
-``name`` フィルタはコンテナ名のすべて、または一部に一致するコンテナを表示します。
+``name`` フィルタはコンテナ名の全て、または一部に一致するコンテナを表示します。
 
 .. The following filter matches all containers with a name containing the nostalgic_stallman string.
 
@@ -226,7 +238,7 @@ ancestor
 
 .. If you don’t specify a tag, the latest tag is used. For example, to filter for containers that use the latest ubuntu image:
 
-``tag`` を指定しなければ、 ``latest`` タグが使われます。例えば、最新（latest）の ``ubuntu`` イメージでフィルタするには：
+``タグ`` を指定しなければ、 ``latest`` タグが使われます。例えば、最新（latest）の ``ubuntu`` イメージでフィルタするには：
 
 .. code-block:: bash
 
@@ -239,7 +251,7 @@ ancestor
 
 .. Match containers based on the ubuntu-c1 image which, in this case, is a child of ubuntu:
 
-``ubuntu-c1`` イメージをベースにするコンテナ、この例では ``ubuntu``  の子供に一致するものを表示するには：
+``ubuntu-c1`` イメージをベースにするコンテナ、この例では ``ubuntu``  の子供に一致するものを表示：
 
 .. code-block:: bash
 
@@ -249,7 +261,7 @@ ancestor
 
 .. Match containers based on the ubuntu version 12.04.5 image:
 
-``ubuntu`` バージョン ``12.04.5``  のイメージをベースとするコンテナをフィルタします：
+``ubuntu`` バージョン ``12.04.5``  のイメージをベースとするコンテナをフィルタ：
 
 .. code-block:: bash
 
@@ -259,13 +271,111 @@ ancestor
 
 .. The following matches containers based on the layer d0e008c6cf02 or an image that have this layer in it’s layer stack.
 
-レイヤー ``d0e008c6cf02`` あるいはイメージをベースにしたコンテナでフィルタします。
+レイヤ ``d0e008c6cf02`` あるいはイメージをベースにしたコンテナでフィルタします。
 
 .. code-block:: bash
 
     $ docker ps --filter ancestor=d0e008c6cf02
    CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
    82a598284012        ubuntu:12.04.5      "top"               3 minutes ago        Up 3 minutes                            sleepy_bose
+
+.. Before
+
+before
+----------
+
+.. The before filter shows only containers created before the container with given id or name. For example, having these containers created:
+
+``before`` フィルタは、指定したコンテナ ID か名前よりも前に作成したコンテナのみ表示します。たとえば、３つのコンテナを作成しているとします。
+
+.. code-block:: bash
+
+   $ docker ps
+   CONTAINER ID        IMAGE       COMMAND       CREATED              STATUS              PORTS              NAMES
+   9c3527ed70ce        busybox     "top"         14 seconds ago       Up 15 seconds                          desperate_dubinsky
+   4aace5031105        busybox     "top"         48 seconds ago       Up 49 seconds                          focused_hamilton
+   6e63f6ff38b0        busybox     "top"         About a minute ago   Up About a minute                      distracted_fermat
+
+.. Filtering with before would give:
+
+``before`` を指定してフィルタリングします。
+
+.. code-block:: bash
+
+   $ docker ps -f before=9c3527ed70ce
+   CONTAINER ID        IMAGE       COMMAND       CREATED              STATUS              PORTS              NAMES
+   4aace5031105        busybox     "top"         About a minute ago   Up About a minute                      focused_hamilton
+   6e63f6ff38b0        busybox     "top"         About a minute ago   Up About a minute                      distracted_fermat
+
+.. Since
+
+since
+----------
+
+.. The since filter shows only containers created since the container with given id or name. For example, with the same containers as in before filter:
+
+``since`` フィルタは、指定したコンテナ ID か名前よりも後に作成したコンテナのみ表示します。次の例は、 ``before`` フィルタの時と同じコンテナを表示します。
+
+.. code-block:: bash
+
+   $ docker ps -f since=6e63f6ff38b0
+   CONTAINER ID        IMAGE       COMMAND       CREATED             STATUS              PORTS               NAMES
+   9c3527ed70ce        busybox     "top"         10 minutes ago      Up 10 minutes                           desperate_dubinsky
+   4aace5031105        busybox     "top"         10 minutes ago      Up 10 minutes                           focused_hamilton
+
+.. Volume
+
+volume
+----------
+
+.. The volume filter shows only containers that mount a specific volume or have a volume mounted in a specific path:
+
+``volume`` フィルタは特定のボリュームをマウントしているコンテナか、特定のパスをマウントしているコンテナを表示します。
+
+.. code-block:: bash
+
+   $ docker ps --filter volume=remote-volume --format "table {{.ID}}\t{{.Mounts}}"
+   CONTAINER ID        MOUNTS
+   9c3527ed70ce        remote-volume
+   
+   $ docker ps --filter volume=/data --format "table {{.ID}}\t{{.Mounts}}"
+   CONTAINER ID        MOUNTS
+   9c3527ed70ce        remote-volume
+
+.. Network
+
+network
+----------
+
+.. The network filter shows only containers that has endpoints on the provided network name or id
+
+``network`` フィルタは、指定したネットワーク名か id をエンドポイントとして持っているコンテナのみ表示します。
+
+.. The following filter matches all containers that are connected to a network with a name containing net1.
+
+以下のフィルタは接続しているネットワーク名に ``net1`` を含む、全てのコンテナを表示します。
+
+.. code-block:: bash
+
+   $ docker run -d --net=net1 --name=test1 ubuntu top
+   $ docker run -d --net=net2 --name=test2 ubuntu top
+   
+   $ docker ps --filter network=net1
+   CONTAINER ID        IMAGE       COMMAND       CREATED             STATUS              PORTS               NAMES
+   9d4893ed80fe        ubuntu      "top"         10 minutes ago      Up 10 minutes                           test1
+
+.. The network filter matches on both the network's name and id. The following example shows all containers that are attached to the net1 network, using the network id as a filter;
+
+ネットワーク・フィルタはネットワーク名または ID にマッチします。次の例は ``net1`` ネットワークにアタッチしている全てのコンテナを表示します。ここではネットワーク ID でフィルタします。
+
+.. code-block:: bash
+
+   $ docker network inspect --format "{{.ID}}" net1
+   8c0b4110ae930dbe26b258de9bc34a03f98056ed6f27f991d32919bfe401d7c5
+   
+   $ docker ps --filter network=8c0b4110ae930dbe26b258de9bc34a03f98056ed6f27f991d32919bfe401d7c5
+   CONTAINER ID        IMAGE       COMMAND       CREATED             STATUS              PORTS               NAMES
+   9d4893ed80fe        ubuntu      "top"         10 minutes ago      Up 10 minutes                           test1
 
 .. Formatting
 
@@ -295,15 +405,14 @@ Go テンプレートで置き換え可能な一覧は、次の通りです：
    .Labels 	All labels assigned to the container.
    .Label 	Value of a specific label for this container. For example {{.Label "com.docker.swarm.cpu"}}
 
-.. list-table
-   :header-rows: 1
+.. list-table::
    
    * - ``.ID``
      - コンテナ ID
    * - ``.Image``
      - イメージ ID
    * - ``.Command``
-     - Quoted command
+     - クォートされたコマンド
    * - ``.CreatedAt``
      - コンテナが作成された時間
    * - ``.RunningFor``
@@ -323,7 +432,7 @@ Go テンプレートで置き換え可能な一覧は、次の通りです：
 
 .. When using the --format option, the ps command will either output the data exactly as the template declares or, when using the table directive, will include column headers as well.
 
-``ps`` コマンドに ``--format`` オプションを使うと、テンプレートで指定したデータを出力するだけでなく、 ``table`` 命令を使うとカラム（例）ヘッダも同様に表示します。
+``ps`` コマンドに ``--format`` オプションを使えば、テンプレートで指定したデータを出力するだけでなく、 ``table`` 命令を使うとカラム（例）ヘッダも同様に表示します。
 
 .. The following example uses a template without headers and outputs the ID and Command entries separated by a colon for all running containers:
 

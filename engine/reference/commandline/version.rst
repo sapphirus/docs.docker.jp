@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/version/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/version.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/version.md
-.. check date: 2016/04/28
+.. check date: 2016/06/16
 .. Commits on Dec 24, 2015 e6115a6c1c02768898b0a47e550e6c67b433c436
 .. -------------------------------------------------------------------
 
@@ -15,22 +15,24 @@ version
 
 .. code-block:: bash
 
-   Usage: docker version [OPTIONS]
+   使い方: docker version [オプション]
    
-   Show the Docker version information.
+   Docker バージョン情報を表示します。
    
-     -f, --format=""    Format the output using the given go template
-     --help             Print usage
+     -f, --format=""    指定する go テンプレートを使い、出力を整形
+     --help             使い方を表示
 
 .. By default, this will render all version information in an easy to read layout. If a format is specified, the given template will be executed instead.
 
-デフォルトでは、全てのバージョン情報を読みやすい形式で表示します。フォーマットが指定されれば、特定のテンプレートで処理されます。
+デフォルトでは、全てのバージョン情報を読みやすい形式で表示します。フォーマットを指定したら、特定のテンプレートで処理します。
 
 .. Go’s text/template package describes all the details of the format.
 
 Go 言語の `text/template <http://golang.org/pkg/text/template/>`_ パッケージにフォーマットの全ての詳細が記載されています。
 
 .. Examples
+
+.. _version-examples:
 
 例
 ==========

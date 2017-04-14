@@ -1,10 +1,10 @@
 ﻿.. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/logging/gcplogs/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/admin/logging/gcplogs.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/admin/logging/gcplogs.md
-.. check date: 2016/04/21
-.. Commits on Feb 17, 2016 3fe60bbf95b60f1a1e847a48e1c9b9730e570dff
+.. check date: 2016/07/09
+.. Commits on Jul 4, 2016 644a7426cc31c338fedb6574d2b88d1cc2f43a08
 .. -------------------------------------------------------------------
 
 .. Google Cloud logging driver
@@ -32,7 +32,7 @@ Google Cloud ロギング・ドライバはコンテナのログを `Google Clou
 
 .. You can configure the default logging driver by passing the --log-driver option to the Docker daemon:
 
-Docker デーモンのオプションで ``--log-driver`` を指定する事で、デフォルトのロギング・ドライバを変更可能です。
+デフォルトのロギング・ドライバを設定するには、Docker デーモンに ``--log-driver`` オプションを使います。
 
 .. code-block:: bash
 
@@ -50,7 +50,7 @@ Docker デーモンのオプションで ``--log-driver`` を指定する事で�
 
 このログ・ドライバを実装すると、 ``docker logs`` コマンドでログを参照できません。
 
-.. If Docker detects that it is running in a Google Cloud Project, it will discover configuration from the instance metadata service. Otherwise, the user must specify which project to log to using the --gcp-project log option and Docker will attempt to obtain credentials from the Google Application Default Credential. The --gcp-project takes precedence over information discovered from the metadata server so a Docker daemon running in a Google Cloud Project can be overriden to log to a different Google Cloud Project using --gcp-project.
+.. If Docker detects that it is running in a Google Cloud Project, it will discover configuration from the instance metadata service. Otherwise, the user must specify which project to log to using the --gcp-project log option and Docker will attempt to obtain credentials from the Google Application Default Credential. The --gcp-project takes precedence over information discovered from the metadata server so a Docker daemon running in a Google Cloud Project can be overridden to log to a different Google Cloud Project using --gcp-project.
 
 Docker が Google Cloud プロジェクトを検出すると、 `インスタンス・メタデータ・サービス <https://cloud.google.com/compute/docs/metadata>`_ 上で設定を見つけられるようになります。あるいは、ユーザがプロジェクトのログを記録するには ``--gcp-project`` ログ・オプションを指定し、Docker が `Google Application Default Credential <https://developers.google.com/identity/protocols/application-default-credentials>`_ から証明書を得る必要があります。 `--gcp-project` はメタデータ・サーバによって発見される情報よりも優先します。そのため、Google Cloud Project で動いている Docker デーモンのログは、 ``--gcp-project`` を使って異なったプロジェクトに出力できます。
 

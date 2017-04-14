@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/glossary/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/glossary.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/glossary.md
-.. check date: 2016/04/24
+.. check date: 2016/06/14
 .. Commits on Mar 4, 2016 69004ff67eed6525d56a92fdc69466c41606151a
 .. -------------------------------------------------------------------
 
@@ -23,7 +23,7 @@
 
 .. A list of terms used around the Docker project.
 
-Docker プロジェクト界隈で使われる用語の一覧です。
+Docker プロジェクト界隈で使われている用語の一覧です。
 
 .. aufs
 
@@ -56,7 +56,7 @@ boot2docker
 
 .. boot2docker is a lightweight Linux distribution made specifically to run Docker containers. The boot2docker management tool for Mac and Windows was deprecated and replaced by docker-machine which you can install with the Docker Toolbox.
 
-`boot2docker <http://boot2docker.io/>`_ （ブート・トゥ・ドッカー）は Docker コンテナの実行に特化した Linux ディストリビューションです。Mac および Windows 向けの boot2docker は、Docker Toolbox のインストールに含まれる ``docker-machine`` に置き換えられました。
+`boot2docker <http://boot2docker.io/>`_ （ブート・トゥ・ドッカー）は Docker コンテナの実行に特化した Linux ディストリビューションです。Mac 及び Windows 向けの boot2docker は、Docker Toolbox のインストールに含まれる ``docker-machine`` に置き換えられました。
 
 .. btrfs
 
@@ -76,7 +76,7 @@ btrfs （B-tree file system；ビー・ツリー・ファイルシステム、�
 
 .. build is the process of building Docker images using a Dockerfile. The build uses a Dockerfile and a “context”. The context is the set of files in the directory in which the image is built.
 
-ビルド（build）とは、 :ref:`Dockerfile` を使って Docker イメージを構築する方法です。構築時には Dockerfile と「コンテキスト」（内容物の意味）を使います。コンテキストとは、イメージ構築に必要なファイル群が置かれているディレクトリです。
+ビルド（build）とは、 :ref:`Dockerfile` を使って Docker イメージを構築する方法です。構築時には Dockerfile と「コンテクスト」（内容物の意味）を使います。コンテクストとは、イメージ構築に必要なファイル群が置かれているディレクトリです。
 
 .. cgroups
 
@@ -182,7 +182,7 @@ Docker Hub
 * Docker イメージを預かる（ホスティング）
 * ユーザ認証
 * イメージの自動構築と、構築トリガ（build triggers）やウェブ・フック（web hooks）のようなワークフロー・ツール
-* GitHub と Bitbucket との統合
+* GitHub 及び Bitbucket との統合
 
 .. Dockerfile
 
@@ -256,7 +256,7 @@ libnetwork（リブネットワーク）は Go 言語のネイティブな実装
 
 .. links provide a legacy interface to connect Docker containers running on the same host to each other without exposing the hosts’ network ports. Use the Docker networks feature instead.
 
-リンク機能は同じホスト上で実行している Docker コンテナ間を接続するための、レガシーな（古い）インタフェースです。リンク機能を使うと、ホスト側のネットワーク・ポートを開く必要がありません。現在は、この機能の替わりに Docker ネットワーク機能を使います。
+リンク機能は同じホスト上で実行している Docker コンテナ間を接続するための、レガシーな（古い）インターフェースです。リンク機能を使うと、ホスト側のネットワーク・ポートを開く必要がありません。現在は、この機能の替わりに Docker ネットワーク機能を使います。
 
 .. Machine
 
@@ -392,7 +392,7 @@ Docker Toolbox（ツールボックス）は Mac あるいは Windows ユーザ�
 
 .. Compared to to containers, a Virtual Machine is heavier to run, provides more isolation, gets its own set of resources and does minimal sharing.
 
-コンテナと比べると、仮想マシンの実行は重たいものですが、さらなる隔離を提供し、自身でリソースを持っており、共有は最低限です。
+コンテナと比べると、仮想マシンの実行は重たいものですが、更なる隔離を提供し、自身でリソースを持っており、共有は最低限です。
 
 .. Also known as : VM
 

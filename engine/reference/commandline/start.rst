@@ -1,9 +1,9 @@
-.. -*- coding: utf-8 -*-
+﻿.. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/start/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/start.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/start.md
-.. check date: 2016/04/28
+.. check date: 2016/06/16
 .. Commits on Jan 4, 2016 15aa2a663b47b6126a66efefcadb64edfbffb9f5
 .. -------------------------------------------------------------------
 
@@ -15,14 +15,14 @@ start
 
 .. code-block:: bash
 
-   Usage: docker start [OPTIONS] CONTAINER [CONTAINER...]
+   使い方: docker start [オプション] コンテナ [コンテナ...]
    
-   Start one or more containers
+   １つまたは複数のコンテナを起動する
    
-     -a, --attach               Attach STDOUT/STDERR and forward signals
-     --detach-keys              Specify the escape key sequence used to detach a container
-     --help                     Print usage
-     -i, --interactive          Attach container's STDIN
+     -a, --attach               STDOUT、STDERR にアタッチする
+     --detach-keys              コンテナのデタッチに使うエスケープ・キー・シーケンスを設定
+     --help                     使い方の表示
+     -i, --interactive          コンテナの STDIN にアタッチ
 
 .. seealso:: 
 

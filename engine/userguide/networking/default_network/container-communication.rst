@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/networking/default_network/container-communication/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/networking/default_network/container-communication.md
-   doc version: 1.10
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/networking/default_network/container-communication.md
-.. check date: 2016/04/17
-.. Commits on Apr 13, 2016 30859c34569b900d3d798ad55f48f3d4fd7dc32c
+.. check date: 2016/06/14
+.. Commits on May 19, 2016 5fb7f9b29e9a85f36d02c4ecec6c04498fdb4315
 .. ---------------------------------------------------------------------------
 
 .. Understand container communication
@@ -54,6 +54,12 @@ IP パケット転送（ip packet forwarding）は、 ``ip_forward`` システ�
    $ sysctl net.ipv4.conf.all.forwarding
    net.ipv4.conf.all.forwarding = 1
 
+.. Note: this setting does not affect containers that use the host network stack (--net=host).
+
+.. note::
+
+  この設定は、コンテナがホスト側のネットワーク・スタックの使用時（ ``--net=host`` ）に影響を与えません。
+
 .. Many using Docker will want ip_forward to be on, to at least make communication possible between containers and the wider world. May also be needed for inter-container communication if you are in a multiple bridge setup.
 
 Docker を使う多くの環境で ``ip_forward`` の有効化が必要となるでしょう。コンテナと世界が通信できるようにするには、この設定が最低限必要だからです。また、複数のブリッジをセットアップする場合は、コンテナ間での通信にも必要となります。
@@ -97,11 +103,11 @@ Docker のデフォルト転送ルールは、全ての外部ソースの IP ア
 
 * ``iptables`` は特定の接続を許可していますか？ Docker はデーモンの起動時に ``--iptables=false`` を設定したら、システム上の ``iptables`` に対する変更を一切行いません。そのかわり、Docker サーバは ``FORWARD`` チェーンにデフォルトのルールを追加する時、デフォルトの ``--icc=true`` であれば空の ``ACCEPT`` ポリシーを追加します。もし ``--icc=false`` であれば ``DROP`` ポリシーを設定します。
 
-.. It is a strategic question whether to leave --icc=true or change it to --icc=false so that iptables will protect other containers – and the main host – from having arbitrary ports probed or accessed by a container that gets compromised.
+.. It is a strategic question whether to leave --icc=true or change it to --icc=false so that iptables will protect other containers -- and the main host -- from having arbitrary ports probed or accessed by a container that gets compromised.
 
 ``--icc=true`` のままにしておくか、あるいは ``--icc=false`` にすべきかという方針の検討には、 ``iptables`` を他のコンテナやメインのホストから守るかどうかです。例えば、恣意的なポート探査やコンテナに対するアクセスは、問題を引き起こすかもしれません。
 
-.. If you choose the most secure setting of --icc=false, then how can containers communicate in those cases where you want them to provide each other services? The answer is the --link=CONTAINER_NAME_or_ID:ALIAS option, which was mentioned in the previous section because of its effect upon name services. If the Docker daemon is running with both --icc=false and --iptables=true then, when it sees docker run invoked with the --link= option, the Docker server will insert a pair of iptables ACCEPT rules so that the new container can connect to the ports exposed by the other container – the ports that it mentioned in the EXPOSE lines of its Dockerfile.
+.. If you choose the most secure setting of --icc=false, then how can containers communicate in those cases where you want them to provide each other services? The answer is the --link=CONTAINER_NAME_or_ID:ALIAS option, which was mentioned in the previous section because of its effect upon name services. If the Docker daemon is running with both --icc=false and --iptables=true then, when it sees docker run invoked with the --link= option, the Docker server will insert a pair of iptables ACCEPT rules so that the new container can connect to the ports exposed by the other container -- the ports that it mentioned in the EXPOSE lines of its Dockerfile.
 
 もし、より高い安全のために ``--icc=false`` を選択した場合は、コンテナが他のサービスと相互に通信するには、どのような設定が必要でしょうか。この答えが、 ``--link=コンテナ名_または_ID:エイリアス`` オプションです。これについては以前のセクションで、サービス名について言及しました。もし Docker デーモンが ``--icc=false`` と ``iptables=true`` のオプションを指定したら、 ``docker run`` は ``--link=`` オプションの情報を参照し、他のコンテナが新しいコンテナの公開用ポートに接続できるよう ``iptables`` の ``ACCEPT`` ルールのペアを追加します。この公開用ポートとは、 ``Dockerfile`` の ``EXPOSE`` 行で指定していたものです。
 

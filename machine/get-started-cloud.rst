@@ -23,7 +23,7 @@ Docker Machine をクラウド・プロバイダで使う
 
 .. Docker Machine driver plugins are available for many cloud platforms, so you can use Machine to provision cloud hosts. When you use Docker Machine for provisioning, you create cloud hosts with Docker Engine installed on them.
 
-Docker Machine は様々なクラウド・プラットフォーオムに対応したプラグインを扱えます。このプラグインに対応したドライバを使うと、Machine でクラウド・ホストを自動作成します。自動構築に Docker Machine を使えば、作成されるホスト上に Docker Engine も自動インストールできます。
+Docker Machine は様々なクラウド・プラットフォームに対応したプラグインを扱えます。このプラグインに対応したドライバを使えば、Docker Machine でクラウド・ホストを自動作成します。そして、作成するホスト上に Docker Engine も自動インストールできます。
 
 .. You’ll need to install and run Docker Machine, and create an account with the cloud provider.
 
@@ -86,7 +86,7 @@ docker-machine create コマンド
 
 ..    --driver - to indicate the provider on which to create the machine (VirtualBox, DigitalOcean, AWS, and so on)
 
-* ``--driver`` マシンを作成するプロバイダを明示します（ VirtualBox 、 DigitalOcean 、 AWS 、等）。
+* ``--driver`` で、マシンを作成するプロバイダを明示します（ VirtualBox 、 Digital Ocean 、 AWS 、等）。
 
 ..    Account verification and security credentials (for cloud providers), specific to the cloud service you are using
 
@@ -94,15 +94,15 @@ docker-machine create コマンド
 
 ..    <machine> - name of the host you want to create
 
-* ``<マシン名>`` 作成したいホスト名。
+* ``<マシン名>`` で作成したいホスト名。
 
 .. For convenience, docker-machine will use sensible defaults for choosing settings such as the image that the server is based on, but you override the defaults using the respective flags (e.g. --digitalocean-image). This is useful if, for example, you want to create a cloud server with a lot of memory and CPUs (by default docker-machine creates a small server).
 
-扱いやすいように、 ``docker-machine`` でサーバ作成時に一般的なオプションがデフォルトで適用されます。しかし、これらのデフォルト値はフラグを使って上書きできます（例： ``--digitalocean-image`` ）。そのため、クラウド・サーバで多くのメモリや CPU を割り当てたい場合には便利でしょう（デフォルトの ``docker-machine`` は小さなサーバを作成します）。
+扱いやすいように、 ``docker-machine`` でサーバ作成時に一般的なオプションがデフォルトで適用されます。しかし、これらのデフォルト値はフラグを使って上書きできます（例： ``--digitalocean-image`` ）。そのため、クラウド・サーバに多くのメモリや CPU を割り当てたい場合には便利でしょう（デフォルトの ``docker-machine`` は小さなサーバを作成します）。
 
 .. For a full list of the flags/settings available and their defaults, see the output of docker-machine create -h at the command line, the create command in the Machine command line reference, and driver options and operating system defaults in the Machine driver reference.
 
-デフォルトの値、あるいは利用可能なフラグや設定を全て確認したい場合は、コマンドラインで `docker-machine create -h`` を使います。他にも、Machine :doc:`コマンドライン・リファレンス </machine/reference/index>` の :doc:`create </machine/reference/create>` コマンドや、Machine ドライバ・リファレンスの :doc:`/machine/drivers/os-base`  をご覧ください。
+デフォルトの値、あるいは利用可能なフラグや設定を全て確認したい場合は、コマンドラインで ``docker-machine create -h`` を使います。他にも、Machine :doc:`コマンドライン・リファレンス </machine/reference/index>` の :doc:`create </machine/reference/create>` コマンドや、Machine ドライバ・リファレンスの :doc:`/machine/drivers/os-base`  をご覧ください。
 
 .. Drivers for cloud providers
 
@@ -113,11 +113,11 @@ docker-machine create コマンド
 
 .. When you install Docker Machine, you get a set of drivers for various cloud providers (like Amazon Web Services, Digital Ocean, or Microsoft Azure) and local providers (like Oracle VirtualBox, VMWare Fusion, or Microsoft Hyper-V).
 
-Docker Machine をインストールすると、様々なクラウド・プロバイダに対応したドライバ（Amazon Web Services 、 Digital Ocean 、 Microsoft Azure 等）と、ローカルのプロバイダ（Oracle VirtualBox 、VMware Fusion 、Microsoft Hyper-V）が利用可能になります。
+Docker Machine をインストーしたら、様々なクラウド・プロバイダに対応したドライバ（Amazon Web Services 、 Digital Ocean 、 Microsoft Azure 等）と、ローカルのプロバイダ（Oracle VirtualBox 、VMware Fusion 、Microsoft Hyper-V）が利用可能になります。
 
 .. See Docker Machine driver reference for details on the drivers, including required flags and configuration options (which vary by provider).
 
-各ドライバの詳細は :doc:`Docker Machine ドライバ・リファレンス </machine/drivers/index>` から、必要なフラグや設定オプション（プロバイダ毎にかなり違います）をご確認ください。
+各ドライバの詳細は :doc:`Docker Machine ドライバ・リファレンス </machine/drivers/index>` から、必要なフラグや設定オプション（プロバイダごとにかなり違います）をご確認ください。
 
 .. 3rd-party driver plugins
 
@@ -132,7 +132,7 @@ Docker Machine をインストールすると、様々なクラウド・プロ�
 
 .. See Available driver plugins in the docker/machine repo on GitHub.
 
-GItHub の docker/machine リポジトリ上の `利用可能なドライバ・プラグイン <https://github.com/docker/machine/blob/master/docs/AVAILABLE_DRIVER_PLUGINS.md>`_ をご覧ください。
+使うには、GItHub の docker/machine リポジトリ上の `利用可能なドライバ・プラグイン <https://github.com/docker/machine/blob/master/docs/AVAILABLE_DRIVER_PLUGINS.md>`_ をご覧ください。
 
 .. Adding a host without a driver
 
@@ -143,7 +143,7 @@ GItHub の docker/machine リポジトリ上の `利用可能なドライバ・�
 
 .. You can add a host to Docker which only has a URL and no driver. Then you can use the machine name you provide here for an existing host so you don’t have to type out the URL every time you run a Docker command.
 
-Docker の場所を指定すると、ドライバがないホストの追加が可能です。既存のホストに関するマシン名を指定することにより、Docker コマンド使用時に毎回オプションを指定する必要がなくなります。
+Docker の場所を指定したら、ドライバがないホストの追加が可能です。既存のホストに関するマシン名を指定することにより、Docker コマンド使用時に毎回オプションを指定する必要がなくなります。
 
 .. code-block:: bash
 

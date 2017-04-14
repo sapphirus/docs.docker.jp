@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/security/https/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/security/https.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/security/https.md
-.. check date: 2016/04/21
-.. Commits on Jan 23, 2016 4c76c665b73dbd0beb0cb465caa921cbeb1cf61f
+.. check date: 2016/06/14
+.. Commits on Jun 2, 2016 c1be45fa38e82054dcad606d71446a662524f2d5
 .. -------------------------------------------------------------------
 
 .. Protect the Docker daemon socket
@@ -19,7 +19,7 @@ Docker デーモンのソケットを守る
        :depth: 3
        :local:
 
-.. By default, Docker runs via a non-networked Unix socket. It can also optionally communicate using a HTTP socket.
+.. By default, Docker runs via a non-networked Unix socket. It can also optionally communicate using an HTTP socket.
 
 デフォルトでは、ネットワークを通さない Unix ソケットで Docker を操作します。オプションで HTTP ソケットを使った通信も可能です。
 
@@ -45,7 +45,7 @@ Docker をネットワーク上で安全な方法で使う必要があるなら�
 
 .. Create a CA, server and client keys with OpenSSL
 
-OpenSL で CA （サーバとクライアントの鍵）を作成
+OpenSSL で CA （サーバとクライアントの鍵）を作成
 ==================================================
 
 ..    Note: replace all instances of $HOST in the following example with the DNS name of your Docker daemon’s host.
@@ -166,11 +166,11 @@ TLS 接続は DNS 名と同様に、IP アドレスでも通信可能にでき�
 
 ..    With a default umask of 022, your secret keys will be world-readable and writable for you and your group.
 
-デフォルトの ``umask`` は 022 なので、秘密鍵が自分と同じグループから読み書き可能です。
+デフォルトの ``umask`` は 022 のため、秘密鍵は自分と同じグループから読み書き可能です。
 
 ..    In order to protect your keys from accidental damage, you will want to remove their write permissions. To make them only readable by you, change file modes as follows:
 
-何らかのアクシデントにから自分の鍵を守るため、書き込みパーミッションを削除します。自分だけしか読み込めないようにするには、ファイルモードを次のように変更します。
+何らかのアクシデントから自分の鍵を守るため、書き込みパーミッションを削除します。自分だけしか読み込めないようにするには、ファイルモードを次のように変更します。
 
 .. code-block:: bash
 
@@ -195,7 +195,7 @@ TLS 接続は DNS 名と同様に、IP アドレスでも通信可能にでき�
 
 .. To be able to connect to Docker and validate its certificate, you now need to provide your client keys, certificates and trusted CA:
 
-これは Docker に接続するとき、証明書の認証を必要とするものです。認証には先ほどのクライアント鍵、証明書、信頼できる CA を使います。
+これは Docker に接続する時、証明書の認証を必要とするものです。認証には先ほどのクライアント鍵、証明書、信頼できる CA を使います。
 
 ..     Note: replace all instances of $HOST in the following example with the DNS name of your Docker daemon’s host.
 
@@ -218,16 +218,16 @@ TLS 接続は DNS 名と同様に、IP アドレスでも通信可能にでき�
 
 .. warning::
 
-   上記の例では ``docker`` クライアントの実行に ``sudo`` が不要か、あるいは認証に使うユーザが ``docker`` グループに属しています。つまり、鍵を使ってDocker デーモンにアクセス可能にするのは、デーモンを動かしているマシンの root 権限を与えることを意味します。これらの鍵を root パスワード同様に保護してください！
+   上記の例では ``docker`` クライアントの実行に ``sudo`` が不要か、あるいは認証に使うユーザが ``docker`` グループに属しています。つまり、鍵を使ってDocker デーモンにアクセス可能にするとは、デーモンを動かしているマシンの root 権限を与えるのを意味します。これらの鍵は root パスワード同様に保護してください！
 
 .. Secure by default
 
 デフォルトで安全に
 ====================
 
-.. If you want to secure your Docker client connections by default, you can move the files to the .docker directory in your home directory – and set the DOCKER_HOST and DOCKER_TLS_VERIFY variables as well (instead of passing -H=tcp://$HOST:2376 and --tlsverify on every call).
+.. If you want to secure your Docker client connections by default, you can move the files to the .docker directory in your home directory -- and set the DOCKER_HOST and DOCKER_TLS_VERIFY variables as well (instead of passing -H=tcp://$HOST:2376 and --tlsverify on every call).
 
-Docker クライアントの接続をデフォルトで安全にしたい場合は、自分のホームディレクトリ直下の ``.docker`` ディレクトリにファイルを移動できます。そして、 ``DOCKER_HOST`` と ``DOCKER_TLS_VERIFY`` 環境変数を使います（ 毎回 ``-H=tcp://$HOST;2376`` や ``--tlsverify`` を実行する代わりになります ）。
+Docker クライアントの接続をデフォルトで安全にしたい場合は、自分のホームディレクトリ直下の ``.docker`` ディレクトリにファイルを移動できます。そして、環境変数 ``DOCKER_HOST`` と ``DOCKER_TLS_VERIFY`` を使います（ 毎回 ``-H=tcp://$HOST;2376`` や ``--tlsverify`` を実行する代わりになります ）。
 
 .. code-block:: bash
 
@@ -237,7 +237,7 @@ Docker クライアントの接続をデフォルトで安全にしたい場合�
 
 .. Docker will now connect securely by default:
 
-デフォルトで Docker は安全に接続しています。
+こうしておけば、デフォルトで Docker は安全に接続しています。
 
 .. code-block:: bash
 
@@ -280,7 +280,7 @@ Docker クライアントの接続をデフォルトで安全にしたい場合�
 
 .. If found, the client will send its client certificate, so you just need to drop your keys into ~/.docker/{ca,cert,key}.pem. Alternatively, if you want to store your keys in another location, you can specify that location using the environment variable DOCKER_CERT_PATH.
 
-クライアントがクライアント証明書を送信すると、自分の鍵を ``~'.docker/{ca,cert,key}.pem`` に移動します。あるいは、別の場所に保管し、環境変数 ``DOCKER_CERT_PATH`` でも指定できます。
+クライアントがクライアント証明書を送信したら、自分の鍵を ``~/.docker/{ca,cert,key}.pem`` に移動します。あるいは、別の場所に保管し、環境変数 ``DOCKER_CERT_PATH`` でも指定できます。
 
 .. code-block:: bash
 

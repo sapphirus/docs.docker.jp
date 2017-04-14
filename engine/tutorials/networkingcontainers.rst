@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/containers/networkingcontainers/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/containers/networkingcontainers.md
-   doc version: 1.10
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/containers/networkingcontainers.md
-.. check date: 2016/04/16
+.. check date: 2016/06/13
 .. Commits on Apr 10, 2016 a609c2c48b5d504120777db2ac1ba83bfe355b66
 .. ----------------------------------------------------------------------------
 
@@ -254,7 +254,7 @@ Docker に対して新しいネットワークで使用する ``bridge`` ドラ�
 
 .. Launch a container running a PostgreSQL database and pass it the --net=my-bridge-network flag to connect it to your new network:
 
-PostgreSQL データベースを実行するコンテナを起動します。``--net=my-bridge-netowk`` フラグを付けて、新しいネットワークに接続します。
+PostgreSQL データベースを実行するコンテナを起動します。``--net=my-bridge-network`` フラグを付けて、新しいネットワークに接続します。
 
 .. code-block:: bash
 
@@ -292,7 +292,7 @@ PostgreSQL データベースを実行するコンテナを起動します。``-
 
 .. code-block:: bash
 
-   $ docker inspect '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' web
+   $ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' web
    172.17.0.2
 
 .. Now, open a shell to your running db container:
@@ -319,7 +319,7 @@ Docker のネットワーク機能は、必要に応じてコンテナに対し�
 
 .. code-block:: bash
 
-   $ docker network connect my-bridge-network Web
+   $ docker network connect my-bridge-network web
 
 .. Open a shell into the db application again and try the ping command. This time just use the container name web rather than the IP Address.
 

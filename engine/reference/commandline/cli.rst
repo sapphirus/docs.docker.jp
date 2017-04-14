@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/cli/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/cli.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/cli.md
-.. check date: 2016/04/25
+.. check date: 2016/06/14
 .. Commits on Mar 12, 2016 219e5fdda36a18104f7593da9ed8ca097a60aab3
 .. -------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ Docker のインストールや ``sudo`` 設定については、各オペレー
 * ``DOCKER_CONFIG`` クライアントの設定ファイルの場所。
 * ``DOCKER_CERT_PATH`` 認証鍵ファイルの場所。
 * ``DOCKER_DRIVER`` 使用するグラフドライバ。
-* ``pDOCKER_HOST`` デーモンのソケット接続先。
+* ``DOCKER_HOST`` デーモンのソケット接続先。
 * ``DOCKER_NOWARN_KERNEL_VERSION`` Docker に対応していない Linux カーネルで警告を出さない。
 * ``DOCKER_RAMDISK`` 'pivot_root' を無効に設定。
 * ``DOCKER_TLS_VERIFY`` Docker で TLS とリモート認証を使う。
@@ -106,11 +106,11 @@ Docker コマンドラインは、ホームディレクトリ ``$HOME`` にあ�
 
 .. Docker manages most of the files in the configuration directory and you should not modify them. However, you can modify the config.json file to control certain aspects of how the docker command behaves.
 
-Docker は設定ディレクトリにある殆どのファイルを管理していますので、これらを自分で変更すべきではありません。しかし、 ``docker`` コマンドの振る舞いを制御するため、 ``config.json`` を *編集できます* 。
+Docker は設定ディレクトリにある大部分のファイルを管理していますので、これらを自分で変更すべきではありません。しかし、 ``docker`` コマンドの居津を制御するため、 ``config.json`` を *編集できます* 。
 
 .. Currently, you can modify the docker command behavior using environment variables or command-line options. You can also use options within config.json to modify some of the same behavior. When using these mechanisms, you must keep in mind the order of precedence among them. Command line options override environment variables and environment variables override properties you specify in a config.json file.
 
-現在、 ``docker`` コマンドの振る舞いを環境変数かコマンドラインのオプションで変更可能です。あるいは、オプションとして ``config.json`` を使い、同じように振る舞いを設定できます。これらの仕組みを使う場合は、優先順位に気をつける必要があります。コマンドラインのオプションは環境変数で上書きされ、環境変数は ``config.json`` ファイルで指定した項目に上書きされます。
+現在、 ``docker`` コマンドの挙動を環境変数かコマンドラインのオプションで変更可能です。あるいは、オプションとして ``config.json`` を使い、同じように挙動を設定できます。これらの仕組みを使う場合は、優先順位に気を付ける必要があります。コマンドラインのオプションは環境変数で上書きされ、環境変数は ``config.json`` ファイルで指定した項目に上書きされます。
 
 .. The config.json file stores a JSON encoding of several properties:
 
@@ -126,7 +126,7 @@ Docker は設定ディレクトリにある殆どのファイルを管理して�
 
 .. Once attached to a container, users detach from it and leave it running using the using CTRL-p CTRL-q key sequence. This detach key sequence is customizable using the detachKeys property. Specify a <sequence> value for the property. The format of the <sequence> is a comma-separated list of either a letter [a-Z], or the ctrl- combined with any of the following:
 
-コンテナにアタッチ後は、 ``CTRL-p CTRL-q`` キー・シーケンスで使ってデタッチできます。このデタッチ用キー・シーケンスは ``detachKeys`` 属性を使ってカスタマイズできます。 ``<シーケンス>`` 値の属性を指定します。 ``<シーケンス>`` の書式は [a-Z] までの文字列をカンマ区切りにしたリストにするか、 ``ctrl-`` に以下のいずれかを組み合わせます。
+コンテナにアタッチ後は、 ``CTRL-p CTRL-q`` キー・シーケンスで使ってデタッチできます。このデタッチ用キー・シーケンスは ``detachKeys`` 属性を使ってカスタマイズできます。カスタマイズでは ``<シーケンス>`` 値の属性を指定します。 ``<シーケンス>`` の書式は [a-Z] までの文字列をカンマ区切りにしたリストにするか、 ``ctrl-`` に以下のいずれかを組み合わせます。
 
 ..    a-z (a single lowercase alpha character )
     @ (at sign)
@@ -227,7 +227,7 @@ Notary
 
 .. Options which default to true (e.g., docker build --rm=true) can only be set to the non-default value by explicitly setting them to false:
 
-オプションのデフォルトは ``true``（例： ``docker build --rm=true`` ）ですが、デフォルトではない値を指定するには ``false`` を明示します。
+オプションのデフォルトは ``true`` （例： ``docker build --rm=true`` ）ですが、デフォルトではない値を指定するには ``false`` を明示します。
 
 .. code-block:: bash
 
@@ -251,7 +251,7 @@ Notary
 
 .. Sometimes, multiple options can call for a more complex value string as for -v:
 
-ときどき、複数のオプションは ``-v`` のように複雑になってしまう場合もあります。
+オプションによっては、 ``-v`` のように複雑になる場合もあります。
 
 .. code-block:: bash
 

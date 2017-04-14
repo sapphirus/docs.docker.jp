@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/networking/default_network/dockerlinks.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/networking/default_network/dockerlinks.md
-.. check date: 2016/04/17
+.. check date: 2016/06/14
 .. Commits on Feb 2, 2016 6f863cfa18f30d1df2f1f81b2b4f456dee2a73b8
 .. ---------------------------------------------------------------------------
 
@@ -410,7 +410,7 @@ Docker 環境変数に関する重要な注意
    . . .
    172.17.0.5  webdb 6e5cdeb2d300 db
 
-.. You can see two relevant host entries. The first is an entry for the web container that uses the Container ID as a host name. The second entry uses the link alias to reference the IP address of the db container. In addition to the alias you provide, the linked container’s name–if unique from the alias provided to the --link parameter–and the linked container’s hostname will also be added in /etc/hosts for the linked container’s IP address. You can ping that host now via any of these entries:
+.. You can see two relevant host entries. The first is an entry for the web container that uses the Container ID as a host name. The second entry uses the link alias to reference the IP address of the db container. In addition to the alias you provide, the linked container’s name--if unique from the alias provided to the --link parameter--and the linked container’s hostname will also be added in /etc/hosts for the linked container’s IP address. You can ping that host now via any of these entries:
 
 関係あるホスト２つのエントリが見えます。１行めエントリは、 ``web`` コンテナのものであり、コンテナ ID がホスト名として使われています。２つめのエントリは ``db`` コンテナのものであり、IP アドレスの参照にエイリアスが使われています。エイリアスの指定に加えて、もし ``--link`` パラメータで指定したエイリアスがユニークであれば、リンクされるコンテナのホスト名もまた ``/etc/hosts`` でコンテナの IP アドレスをリンクします。これでホスト上では、これらのエントリを通して ping できます。
 

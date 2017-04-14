@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/network_inspect/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/network_inspect.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/network_inspect.md
-.. check date: 2016/04/28
+.. check date: 2016/06/16
 .. Commits on Mar 14, 2016 2ef00ba89fc04b0a7571aa050d8a11c06f758d9b
 .. -------------------------------------------------------------------
 
@@ -15,12 +15,12 @@ network inspect
 
 .. code-block:: bash
 
-   Usage:  docker network inspect [OPTIONS] NETWORK [NETWORK..]
+   使い方:  docker network inspect [オプション] ネットワーク [ネットワーク..]
    
-   Displays detailed information on a network
+   ネットワークの詳細情報を表示
    
-     -f, --format=       Format the output using the given go template.
-     --help             Print usage
+     -f, --format=       go テンプレートで指定したフォーマットで表示
+     --help             使い方の表示
 
 .. Returns information about one or more networks. By default, this command renders all results in a JSON object. For example, if you connect two containers to the default bridge network:
 

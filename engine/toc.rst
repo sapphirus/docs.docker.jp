@@ -16,7 +16,7 @@ Docker Engine
    :maxdepth: 4
    :caption: Docker Engine 目次
 
-   quickstart.rst
+..   quickstart.rst
    understanding-docker.rst
 
 .. toctree::
@@ -26,6 +26,8 @@ Docker Engine
 
    index.rst
    installation/toc.rst
+   getstarted/toc.rst
+   tutorials/index.rst
    userguide/index.rst
    admin/index.rst
    security/toc.rst
@@ -36,3 +38,4 @@ Docker Engine
    破壊的変更 <breaking_changes.rst>
    廃止機能 <deprecated.rst>
    faq.rst
+   Swarm管理(1.12RC) <swarm/toc.rst>

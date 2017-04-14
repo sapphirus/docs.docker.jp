@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/security/certificates/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/security/certificates.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/security/certificates.md
-.. check date: 2016/04/21
+.. check date: 2016/06/14
 .. Commits on Jan 27, 2016 e310d070f498a2ac494c6d3fde0ec5d6e4479e14
 .. -------------------------------------------------------------------
 
@@ -17,7 +17,7 @@
 
 .. In Running Docker with HTTPS, you learned that, by default, Docker runs via a non-networked Unix socket and TLS must be enabled in order to have the Docker client and the daemon communicate securely over HTTPS. TLS ensures authenticity of the registry endpoint and that traffic to/from registry is encrypted.
 
-:doc:`Docker を HTTPS で動かす <https>` 方法を学びました。デフォルトでは Docker はネットワークで使えない Unix ソケットと、Docker クライアントとデーモンがで安全に通信できるよう HTTPS 上で TLS を有効化すべきという内容でした。TLS はレジストリのエンドポイントにおける認証を確実なものとし、かつ、レジストリからあるいはレジストリへの通信を暗号化します。
+:doc:`Docker を HTTPS で動かす <https>` 方法を学びました。デフォルトでは Docker はネットワークで使えない Unix ソケットについてと、Docker クライアントとデーモンが安全に通信できるように、 HTTPS 上で TLS を有効化すべきという内容でした。TLS はレジストリのエンドポイントにおける認証を確実なものとし、かつ、レジストリからあるいはレジストリへの通信を暗号化します。
 
 .. This article demonstrates how to ensure the traffic between the Docker registry (i.e., a server) and the Docker daemon (i.e., a client) traffic is encrypted and a properly authenticated using certificate-based client-server authentication.
 
@@ -90,7 +90,7 @@
 
 .. note::
 
-   これらの TLS コマンドが生成する証明書は、Linux 上で動作するものです。Mac OS X に含まれている OpenSSL のバージョンでは、Docker が必要とする証明書のタイプとの互換性はありません。
+   これらの TLS コマンドが生成する証明書は、Linux 上で動作するものです。Mac OS X に含まれている OpenSSL のバージョンでは、Docker が必要とする証明書のタイプと互換性はありません。
 
 .. Troubleshooting tips
 
@@ -99,7 +99,7 @@
 
 .. The Docker daemon interprets `.crt files as CA certificates and .cert files as client certificates. If a CA certificate is accidentally given the extension .cert instead of the correct .crt extension, the Docker daemon logs the following error message:
 
-Docker デーモンは ``.crt`` ファイルを CA 証明書として認識し、 ``.cert`` ファイルをクライアント証明書として認識します。CA 証明書が正しい ``.crt`` 拡張子ではなく ``.cert`` 拡張子になってしまうと、Docker デーモンは次のようなエラーメッセージをログに残します。
+Docker デーモンは ``.crt`` ファイルを CA 証明書として認識し、 ``.cert`` ファイルをクライアント証明書として認識します。CA 証明書が正しい ``.crt`` 拡張子ではなく ``.cert`` 拡張子になれば、Docker デーモンは次のようなエラーメッセージをログに残します。
 
 .. code-block:: bash
 

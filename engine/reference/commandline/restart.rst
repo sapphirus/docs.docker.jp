@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/restart/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/restart.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/restart.md
-.. check date: 2016/04/28
+.. check date: 2016/06/16
 .. Commits on Dec 24, 2015 e6115a6c1c02768898b0a47e550e6c67b433c436
 .. -------------------------------------------------------------------
 
@@ -13,20 +13,14 @@
 restart
 =======================================
 
-.. sidebar:: 目次
-
-   .. contents:: 
-       :depth: 3
-       :local:
-
 .. code-block:: bash
 
-   Usage: docker restart [OPTIONS] CONTAINER [CONTAINER...]
+   使い方: docker restart [オプション] コンテナ [コンテナ...]
    
-   Restart a container
+   コンテナを再起動
    
-     --help             Print usage
-     -t, --time=10      Seconds to wait for stop before killing the container
+     --help             使い方の表示
+     -t, --time=10      コンテナを停止するまで待機する秒数
 
 .. seealso:: 
 

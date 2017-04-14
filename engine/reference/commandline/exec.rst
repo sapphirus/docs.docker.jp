@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/exec/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/exec.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/exec.md
-.. check date: 2016/04/26
+.. check date: 2016/06/16
 .. Commits on Jan 4, 2016 cdc7f26715fbf0779a5283354048caf9faa1ec4a
 .. -------------------------------------------------------------------
 
@@ -15,17 +15,17 @@ exec
 
 .. code-block:: bash
 
-   Usage: docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+   使い方: docker exec [オプション] コンテナ コマンド [引数...]
    
-   Run a command in a running container
+   実行中のコンテナでコマンドを実行
    
-     -d, --detach=false         Detached mode: run command in the background
-     --detach-keys              Specify the escape key sequence used to detach a container
-     --help=false               Print usage
-     -i, --interactive=false    Keep STDIN open even if not attached
-     --privileged=false         Give extended Linux capabilities to the command
-     -t, --tty=false            Allocate a pseudo-TTY
-     -u, --user=                Username or UID (format: <name|uid>[:<group|gid>])
+     -d, --detach=false         デタッチド・モード: コマンドをバックグラウンドで実行
+     --detach-keys              デタッチド・コンテナに特定のエスケープ・キー・シーケンスを設定
+     --help=false               使い方の表示
+     -i, --interactive=false    アタッチしていなくても STDIN をオープンにし続ける
+     --privileged=false         コマンドに拡張 Linux ケーパビリティの追加
+     -t, --tty=false            疑似ターミナル (pseudo-TTY) の割り当て
+     -u, --user=                ユーザ名か UID (書式: <名前|uid>[:<グループ|gid>])
 
 .. The docker exec command runs a new command in a running container.
 

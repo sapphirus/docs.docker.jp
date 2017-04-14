@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/kill/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/kill.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/kill.md
-.. check date: 2016/04/26
+.. check date: 2016/06/16
 .. Commits on Dec 24, 2015 e6115a6c1c02768898b0a47e550e6c67b433c436
 .. -------------------------------------------------------------------
 
@@ -15,12 +15,12 @@ kill
 
 .. code-block:: bash
 
-   Usage: docker kill [OPTIONS] CONTAINER [CONTAINER...]
+   使い方: docker kill [オプション] コンテナ [コンテナ...]
    
-   Kill a running container using SIGKILL or a specified signal
+   実行中のコンテナを SIGKILL か指定したシグナルで停止
    
-     --help                 Print usage
-     -s, --signal="KILL"    Signal to send to the container
+     --help                 使い方の表示
+     -s, --signal="KILL"    コンテナに送信するシグナル
    
 .. The main process inside the container will be sent SIGKILL, or any signal specified with option --signal.
 

@@ -1,9 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/security/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/security/index.md
-   doc version: 1.10
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/security/index.md
-.. check date: 2016/02/14
+.. check date: 2016/06/14
+.. Commits on Jan 27, 2016 e310d070f498a2ac494c6d3fde0ec5d6e4479e14
 .. -------------------------------------------------------------------
 
 .. Secure Engine
@@ -21,7 +22,7 @@
 
 .. This section discusses the security features you can configure and use within your Docker Engine installation.
 
-このセクションは Docker エンジンのセキュリティ機能やインストール時の設定について扱います。
+このセクションは Docker Engine のセキュリティ機能や、インストール時の設定について扱います。
 
 ..    You can configure Docker’s trust features so that your users can push and pull trusted images. To learn how to do this, see Use trusted images in this section.
 

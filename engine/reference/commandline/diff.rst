@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/diff/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/diff.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/diff.md
-.. check date: 2016/04/26
+.. check date: 2016/06/14
 .. Commits on Dec 24, 2015 e6115a6c1c02768898b0a47e550e6c67b433c436
 .. -------------------------------------------------------------------
 
@@ -15,11 +15,11 @@ diff
 
 .. code-block:: bash
 
-   Usage: docker diff [OPTIONS] CONTAINER
+   使い方: docker diff [オプション] コンテナ
    
-   Inspect changes on a container's filesystem
+   コンテナのファイルシステムに対する変更を調査
    
-     --help              Print usage
+     --help              使い方の表示
 
 .. List the changed files and directories in a container᾿s filesystem There are 3 events that are listed in the diff:
 

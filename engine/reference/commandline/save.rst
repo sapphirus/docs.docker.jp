@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/save/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/save.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/save.md
-.. check date: 2016/04/28
+.. check date: 2016/06/16
 .. Commits on Mar 22, 2016 5a701c3e4cd63f0b17b4fe9ab13c8cbe0ea5d353
 .. -------------------------------------------------------------------
 
@@ -15,16 +15,16 @@ save
 
 .. code-block:: bash
 
-   Usage: docker save [OPTIONS] IMAGE [IMAGE...]
+   使い方: docker save [オプション] イメージ [イメージ...]
    
-   Save one ore more images to a tar archive (streamed to STDOUT by default)
+   １つまたは複数のイメージを tar アーカイブに保存（デフォルトは STDOUT にストリーム）
    
-     --help             Print usage
-     -o, --output=""    Write to a file, instead of STDOUT
+     --help             使い方の表示
+     -o, --output=""    STDOUT（標準出力）の代わりに、ファイルへ書き込む
 
 .. Produces a tarred repository to the standard output stream. Contains all parent layers, and all tags + versions, or specified repo:tag, for each argument provided.
 
-tar 化されたリポジトリを、標準出力のストリームに出力します。ここには全ての親レイヤが含まれ、全てのタグとバージョンだけでなく、 ``repo:tag`` が指定されれば、それぞれの引数に応じて出力します。
+tar 化されたリポジトリを、標準出力のストリームに出力します。ここには全ての親レイヤが含まれ、全てのタグとバージョンだけでなく、 ``リポジトリ名:タグ`` が指定されれば、それぞれの引数に応じて出力します。
 
 .. It is used to create a backup that can then be used with docker load
 
@@ -43,7 +43,7 @@ tar 化されたリポジトリを、標準出力のストリームに出力し�
 
 .. It is even useful to cherry-pick particular tags of an image repository
 
-イメージのリポジトリで適切なタグを指定する場合も便利でしょう。
+イメージのリポジトリで、適切なタグを指定する場合にも便利でしょう。
 
 .. code-block:: bash
 

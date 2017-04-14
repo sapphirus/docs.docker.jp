@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/commit/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/commit.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/commit.md
-.. check date: 2016/04/25
-.. Commits on Feb 19, 2016 cdc7f26715fbf0779a5283354048caf9faa1ec4a
+.. check date: 2016/06/14
+.. Commits on May 22, 2016 ea98cf74aad3c2633268d5a0b8a2f80b331ddc0b
 .. -------------------------------------------------------------------
 
 .. commit
@@ -13,27 +13,27 @@
 commit
 =======================================
 
+.. code-block:: bash
+
+   使い方: docker commit [オプション] コンテナ [リポジトリ[:タグ]]
+   
+   コンテナの変更を元に新しいイメージを作成
+   
+     -a, --author=""     作者 (例 "John Hannibal Smith <hannibal@a-team.com>")
+     -c, --change=[]     イメージをコミット時の Dockerfile 命令を追加指定
+     --help              使い方を表示
+     -m, --message=""    コミット・メッセージ
+     -p, --pause=true    コンテナをコミット時に一時停止（pause)する
+
 .. sidebar:: 目次
 
    .. contents:: 
        :depth: 3
        :local:
 
-.. code-block:: bash
+.. It can be useful to commit a container’s file changes or settings into a new image. This allows you debug a container by running an interactive shell, or to export a working dataset to another server. Generally, it is better to use Dockerfiles to manage your images in a documented and maintainable way. Read more about valid image names and tags.
 
-   Usage: docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
-   
-   Create a new image from a container's changes
-   
-     -a, --author=""     Author (e.g., "John Hannibal Smith <hannibal@a-team.com>")
-     -c, --change=[]     Apply specified Dockerfile instructions while committing the image
-     --help              Print usage
-     -m, --message=""    Commit message
-     -p, --pause=true    Pause container during commit
-
-.. It can be useful to commit a container’s file changes or settings into a new image. This allows you debug a container by running an interactive shell, or to export a working dataset to another server. Generally, it is better to use Dockerfiles to manage your images in a documented and maintainable way.
-
-コンテナのファイル変更や設定を、新しいイメージに収容（commit；コミット）するために便利です。これにより、インタラクティブなシェル上でコンテナをデバッグ用に動かしたり、作業中のデータセットを他のサーバに持っていくため出力したりできます。通常は、イメージを管理するためには、文書化されメンテナンスのしやすい Dockerfile を使う方法が望ましいです。
+コンテナのファイル変更や設定を、新しいイメージに収容（commit；コミット）するために便利です。これにより、インタラクティブなシェル上でコンテナをデバッグ用に動かしたり、作業中のデータセットを他のサーバに持っていくため出力したりできます。通常は、イメージを管理するためには、文書化されメンテナンスのしやすい Dockerfile を使うのが望ましい方法です。 :doc:`詳細はイメージ名とタグについてをご覧ください <tag>` 。
 
 .. The commit operation will not include any data contained in volumes mounted inside the container.
 

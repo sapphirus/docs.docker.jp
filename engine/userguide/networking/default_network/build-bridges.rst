@@ -1,9 +1,9 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/networking/default_network/build-bridges/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/networking/default_network/build-bridges.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/networking/default_network/build-bridges.md
-.. check date: 2016/04/17
+.. check date: 2016/06/14
 .. Commits on Jan 12, 2016 0ba6a128eeee3f1519fa3842a6847402a7eafa05
 .. ---------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@
    target     prot opt source               destination
    MASQUERADE  all  --  192.168.5.0/24      0.0.0.0/0
 
-.. The result should be that the Docker server starts successfully and is now prepared to bind containers to the new bridge. After pausing to verify the bridge’s configuration, try creating a container – you will see that its IP address is in your new IP address range, which Docker will have auto-detected.
+.. The result should be that the Docker server starts successfully and is now prepared to bind containers to the new bridge. After pausing to verify the bridge’s configuration, try creating a container -- you will see that its IP address is in your new IP address range, which Docker will have auto-detected.
 
 この結果、Docker サーバの起動は成功し、コンテナに対して新しいブリッジが割り当てられているでしょう。ブリッジの設定を確認した後、コンテナを作成してみます。Docker は新しい IP アドレスの範囲を自動的に検出し、IP アドレスが割り当てられているのが分かるでしょう。
 

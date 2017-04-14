@@ -69,7 +69,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. When you create the swarm node, use the <discovery> argument to specify one of the following discovery backends:
 
-`Swarm ノードの作成時、 ``<discovery>`` 引数を使って以下のバックエンドを指定可能です。
+Swarm ノードの作成時、 ``<discovery>`` を使って以下のバックエンドを指定可能です。
 
 * ``token://<token>``
 * ``consul://<ip1>/<path>``
@@ -92,7 +92,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 ..    path (optional) is a path to a key-value store on the discovery backend. When you use a single backend to service multiple clusters, you use paths to maintain separate key-value stores for each cluster.
 
-* ``path`` （オプション）はディスカバリ・バックエンドのキーバリュー・ストアのパスを指定します。複数のクラスタを１つのバックエンドで管理する場合は、各クラスタ毎にキーバリューのペアを記述する必要があります。
+* ``path`` （オプション）はディスカバリ・バックエンドのキーバリュー・ストアのパスを指定します。複数のクラスタを１つのバックエンドで管理する場合は、各クラスタごとにキーバリューのペアを記述する必要があります。
 
 ..     path/to/file is the path to a file that contains a static list of the Swarm managers and nodes that are members the cluster.
 
@@ -165,7 +165,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. Use --filter <value> or -f <value> to tell the Docker Swarm scheduler which nodes to use when creating and running a container.
 
-``--filter <値>`` もしくは ``-f <値>`` で、コンテナを作成・実行時、どのノードを使うか Docker Swarm スケジューラに対して指定します。
+``--filter <値>`` もしくは ``-f <値>`` で、コンテナを作成・実行時、どのノードを使うかを Docker Swarm スケジューラに対して指定します。
 
 .. Where <value> is:
 
@@ -203,7 +203,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. Use --host <ip>:<port> or -H <ip>:<port> to specify the IP address and port number to which the manager listens for incoming messages. If you replace <ip> with zeros or omit it altogether, the manager uses the default host IP. For example, --host=0.0.0.0:3376 or -H :4000.
 
-``--host <IP>:<ポート>`` もしくは ``-H <ip>:<ポート>`` を使い、マネージャがメッセージを受信するための IP アドレスとポート番号を指定します。 ``ip`` の部分に 0 を使うか省略すると、manager はデフォルトのホスト IP を使います。例： ``--host=0.0.0.0:3376`` または ``-H :4000`` 。
+``--host <IP>:<ポート>`` もしくは ``-H <ip>:<ポート>`` を使い、マネージャがメッセージを受信するための IP アドレスとポート番号を指定します。 ``ip`` の部分に 0 を使うか省略したら、manager はデフォルトのホスト IP を使います。例： ``--host=0.0.0.0:3376`` または ``-H :4000`` 。
 
 .. The environment variable for --host is $SWARM_HOST.
 
@@ -216,7 +216,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. Enable Swarm manager replication between the primary and secondary managers in a high-availability cluster. Replication mirrors cluster information from the primary to the secondary managers so that, if the primary manager fails, a secondary can become the primary manager.
 
-高可用性クラスタでは、プライマリとセカンダリ・マネージャ間で、Swarm マネージャの複製（レプリケーション）を可能にします。プライマリからセカンダリにクラスタ情報のミラーを複製します。つまりプライマリ・マネージャで障害が起こると、セカンダリがプライマリ・マネージャになれます。
+高可用性クラスタでは、プライマリとセカンダリ・マネージャ間で、Swarm マネージャの複製（レプリケーション）を可能にします。プライマリからセカンダリにクラスタ情報のミラーを複製します。つまりプライマリ・マネージャで障害が起これば、セカンダリがプライマリ・マネージャになれます。
 
 .. --replication-ttl — Leader lock release time on failure
 
@@ -256,7 +256,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. Use --tlscacert=<path/file> to specify the path and filename of the public key (certificate) from a Certificate Authority (CA). For example, --tlscacert=/certs/ca.pem. When specified, the manager trusts only remotes that provide a certificate signed by the same CA.
 
-``--tlscacert=<path/file>`` を使い証明局（CA）用の公開鍵（証明書）のパスとファイル名を指定します。例： ``--tlscacert=/certs/ca.pem`` 。指定すると、マネージャが信頼するのは、同じ証明局で署名された証明書を使っているリモート環境のみです。
+``--tlscacert=<path/file>`` を使い証明局（CA）用の公開鍵（証明書）のパスとファイル名を指定します。例： ``--tlscacert=/certs/ca.pem`` 。指定したら、マネージャが信頼するのは、同じ証明局で署名された証明書を使っているリモート環境のみです。
 
 .. --tlscert — Path to the node’s TLS certificate file
 
@@ -274,7 +274,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. Use --tlskey to specify the path and filename of the manager’s private key (signed by the CA). For example, --tlskey=/certs/key.pem.
 
-``--tlskey`` を使いマネジャの秘密鍵（CAによって署名済み）のファイル名とパスを指定します。例： ``--tlskey=/certs/key.pem`` 。
+``--tlskey`` を使いマネージャの秘密鍵（CAによって署名済み）のファイル名とパスを指定します。例： ``--tlskey=/certs/key.pem`` 。
 
 .. --tlsverify — Use TLS and verify the remote
 
@@ -325,7 +325,7 @@ Swarm マネージャを作成する前に、 :doc:`ディスカバリ・トー�
 
 .. Deprecated; Use --engine-failure-retry instead of --engine-refresh-retry "<number>". The default number is 3 retries.
 
-廃止予定； ``--engine-failure-retry "数値"` の代わりに ``--engine-failure-retry`` を使います。デフォルトは 3 です。
+廃止予定； ``--engine-failure-retry "数値"`` の代わりに ``--engine-failure-retry`` を使います。デフォルトは 3 です。
 
 .. --heartbeat — Period between each heartbeat
 
@@ -394,8 +394,8 @@ Mesos ドライバの利用に関する詳しい情報は、 `Using Docker Swarm
 * ``swarm.overcommit=0.05``- リソースをオーバー・コミットする割合（パーセント）を指定します。デフォルト値は ``0.05`` であり、５パーセントを意味します。
 * ``swarm.createretry=0`` - コンテナ作成に何度失敗すると障害とみなすかを指定します。デフォルトの値は ``0`` 回の再試行です。
 * ``mesos.address=`` - バインドする Mesos のアドレスを指定します。このオプションは環境変数 ``$SWARM_MESOS_ADDRESS`` でも指定できます。
-* ``mesos.checkpointfailover=false`` - Mesos のチェックポインティング（checkpointing）を有効化します。これは、以前まで使っていたエクゼキュータの状態が復旧すると、スレーブが再接続できるようにします。この時、ディスク I/O を消費します。このオプションは環境変数 ``$SWARM_MESOS_CHECKPOINT_FAILOVER`` でも指定できます。デフォルト値は ``false`` （無効）です。
-* ``mesos.port=`` - Mesos がバインドするポートを指定する。このオプションは環境変数 ``$SWARM_MESOS_PORT`` でも指定できます。
+* ``mesos.checkpointfailover=false`` - Mesos のチェックポインティング（checkpointing）を有効化します。これは、以前まで使っていたエクゼキュータの状態が復旧したら、スレーブが再接続できるようにします。この時、ディスク I/O を消費します。このオプションは環境変数 ``$SWARM_MESOS_CHECKPOINT_FAILOVER`` でも指定できます。デフォルト値は ``false`` （無効）です。
+* ``mesos.port=`` - Mesos がバインドするポートを指定します。このオプションは環境変数 ``$SWARM_MESOS_PORT`` でも指定できます。
 * ``mesos.offertimeout=30s`` - Mesos がタイムアウトと判断する秒を指定します。このオプションは環境変数 ``$SWARM_MESOS_OFFER_TIMEOUT`` でも指定できます。デフォルトの値は ``30s`` です。
 * ``mesos.offerrefusetimeout=5s`` - Mesos がリソースの再利用ができないと判断する秒を指定します。このオプションは環境変数 ``$SWARM_MESOS_OFFER_REFUSE_TIMEOUT`` でも指定できます。デフォルトの値は ``5s`` です。
 * ``mesos.tasktimeout=5s`` - Mesos のタスク作成までのタイムアウトを秒で指定します。このオプションは環境変数 ``$SWARM_MESOS_TASK_TIMEOUT`` でも指定できます。デフォルトの値は ``5s`` です。

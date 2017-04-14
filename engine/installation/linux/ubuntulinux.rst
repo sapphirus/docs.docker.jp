@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/installation/linux/ubuntulinux/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/installation/linux/ubuntulinux.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/installation/linux/ubuntulinux.md
-.. check date: 2016/04/16
-.. Commits on Mar 26, 2016 62e7fde80fde2efda14d2b60061106ea48715c50
+.. check date: 2016/06/13
+.. Commits on Jun 2, 2016 53a1de2b1651f0cd5fb3a1f5a3c26f4d5f5dd9b2
 .. ----------------------------------------------------------------------------
 
 .. Ubuntu
@@ -89,8 +89,8 @@ Docker 1.7.1 以上は Docker の ``apt`` リポジトリに保管されてい�
 
 .. code-block:: bash
 
-   $ apt-get update
-   $ apt-get install apt-transport-https ca-certificates
+   $ sudo apt-get update
+   $ sudo apt-get install apt-transport-https ca-certificates
 
 ..    Add the new gpg key.
 
@@ -616,7 +616,7 @@ Docker が使う DNS サーバの指定方法は、次の通りです。
 
 .. code-block:: bash
 
-   $ sudo restart docker
+   $ sudo service docker restart
 
 
 .. Or, as an alternative to the previous procedure, disable dnsmasq in NetworkManager (this might slow your network).

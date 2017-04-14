@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/inspect/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/inspect.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/inspect.md
-.. check date: 2016/04/26
-.. Commits on Jan 22, 2016 b0873c2c5009d4b2f758ea49477b55a2b5600c90
+.. check date: 2016/06/16
+.. Commits on Jun 14, 2016 9acf97b72a4d5ff7b1bcad36fb19b53775f01596
 .. -------------------------------------------------------------------
 
 .. inspect
@@ -15,16 +15,16 @@ inspect
 
 .. code-block:: bash
 
-   Usage: docker inspect [OPTIONS] CONTAINER|IMAGE [CONTAINER|IMAGE...]
+   使い方: docker inspect [オプション] コンテナ|イメージ|タスク [コンテナ|イメージ|タスク...]
    
-   Return low-level information on a container or image
+   コンテナあるいはイメージかタスクの低レベル情報を表示
    
-     -f, --format=""         Format the output using the given go template
-     --help                  Print usage
-     --type=container|image  Return JSON for specified type, permissible
-                             values are "image" or "container"
-     -s, --size=false        Display total file sizes if the type is container
-
+     -f, --format=""              指定する go テンプレートを使い、出力を整形
+     --help                       使い方を表示
+     --type=container|image|task  JSON を返すイメージまたはコンテナの種類を指定
+                                  値は「イメージ」か「コンテナ」か「タスク」
+     -s, --size                   種類がコンテナの場合、合計ファイルサイズを表示
+   
 .. By default, this will render all results in a JSON array. If a format is specified, the given template will be executed for each result.
 
 デフォルトは、全ての結果を JSON 配列で表示します。フォーマットを指定した場合は、それぞれのテンプレートに従って結果を表示します。
@@ -46,7 +46,7 @@ inspect
 
 .. Get an instance’s IP address:
 
-**インスタンスの IP アドレスを取得：**
+**インスタンスの IP アドレスを取得**
 
 .. For the most part, you can pick out any field from the JSON in a fairly straightforward manner.
 
@@ -70,11 +70,19 @@ inspect
 
 .. Get an instance’s log path:
 
-**インスタンスのログ・パスを取得：**
+**インスタンス用ログのパスを取得：**
 
 .. code-block:: bash
 
     $ docker inspect --format='{{.LogPath}}' $INSTANCE_ID
+
+.. Get a Task's image name:
+
+**タスクのイメージ名を取得：**
+
+.. code-block:: bash
+
+   $ docker inspect --format='{{.Container.Spec.Image}}' $INSTANCE_ID
 
 .. List All Port Bindings:
 
@@ -82,7 +90,7 @@ inspect
 
 .. One can loop over arrays and maps in the results to produce simple text output:
 
-配列の中をループして、割り当てられている結果を簡単なテキストとして出力します。
+配列の中をループして、割り当てられている結果を簡単な文字で出力します。
 
 .. code-block:: bash
 
@@ -94,7 +102,7 @@ inspect
 
 .. The .Field syntax doesn’t work when the field name begins with a number, but the template language’s index function does. The .NetworkSettings.Ports section contains a map of the internal port mappings to a list of external address/port objects. To grab just the numeric public port, you use index to find the specific port map, and then index 0 contains the first object inside of that. Then we ask for the HostPort field to get the public address.
 
-``.Field`` 構文は数字で始まるフィールド名で使えませんが、テンプレート言語の ``index`` 機能では利用可能です。 ``.NetworkSettings.Prots`` セクションには、内部と外部にあるアドレス/ポートのオブジェクトに対する割り当てリストを含みます。 ``index`` 0 は、そのオブジェクトの１番目の項目です。 ``HostPort`` フィールドからパブリックアドレスを入手するには、次のようにします。
+``.Field`` 構文は数字で始まるフィールド名で使えませんが、テンプレート言語の ``index`` 機能では利用可能です。 ``.NetworkSettings.Prots`` セクションには、内部と外部にあるアドレス/ポートのオブジェクトに対する割り当てリストを含みます。 ``index`` 0 は、そのオブジェクトの１番めの項目です。 ``HostPort`` フィールドからパブリックアドレスを入手するには、次のようにします。
 
 .. code-block:: bash
 

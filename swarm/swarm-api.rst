@@ -21,11 +21,11 @@ Docker Swarm API
 
 .. The Docker Swarm API is mostly compatible with the Docker Remote API. This document is an overview of the differences between the Swarm API and the Docker Remote API.
 
-Docker Swarm API は :doc:`Docker リモート API </engine/reference/api/docker_remote_api>` と大部分に互換性があります。このドキュメントは、Swarm API と Docker リモート API 間の違いに関する概要です。
+Docker Swarm API は :doc:`Docker リモート API </engine/reference/api/docker_remote_api>` と広範囲の互換性があります。このドキュメントは、Swarm API と Docker リモート API 間の違いに関する概要を説明します。
 
 .. Missing endpoints
 
-エンドポイントがない場合
+エンドポイントが無い場合
 ==============================
 
 .. Some endpoints have not yet been implemented and will return a 404 error.
@@ -60,7 +60,7 @@ Docker Swarm API は :doc:`Docker リモート API </engine/reference/api/docker
 
 * ``GET "/containers/json"`` : 公式 swarm イメージを使ってコンテナを起動した場合、デフォルトでは表示しません。表示するには ``all-1`` を使います。
 
-* ``GET "/images/json"`` : ``–filter node=<Node name>`` を使うことで、特定のノードのイメージ情報を表示します。
+* ``GET "/images/json"`` : ``--filter node=<Node name>`` を使うことで、特定のノードのイメージ情報を表示します。
 
 * ``POST "/containers/create"`` : ``HostConfig`` の ``CpuShares`` 設定で、コンテナに対する CPU コアの割当数を指定します。
 

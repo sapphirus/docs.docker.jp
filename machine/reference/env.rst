@@ -15,12 +15,6 @@
 env
 =======================================
 
-.. sidebar:: 目次
-
-   .. contents:: 
-       :depth: 3
-       :local:
-
 .. Set environment variables to dictate that docker should run a command against a particular machine.
 
 ``docker`` コマンドの実行時に、特定のマシンを指し示せるような環境変数を表示します。
@@ -29,24 +23,29 @@ env
 
    $ docker-machine env --help
    
-   Usage: docker-machine env [OPTIONS] [arg...]
+   使い方: docker-machine env [オプション] [引数...]
    
-   Display the commands to set up the environment for the Docker client
+   Docker クライアント用の環境変数をセットアップするコマンドを表示
    
-   Description:
-      Argument is a machine name.
+   説明:
+      引数はマシン名。
    
-   Options:
+   オプション:
    
-      --swarm  Display the Swarm config instead of the Docker daemon
-      --shell  Force environment to be configured for a specified shell: [fish, cmd, powershell], default is sh/bash
-      --unset, -u  Unset variables instead of setting them
-      --no-proxy   Add machine IP to NO_PROXY environment variable
+      --swarm  Docker デーモンの代わりに Swarm の設定を表示
+      --shell  環境変数を設定するシェルを指定: [fish, cmd, powershell, tcsh], デフォルトは sh/bash
+      --unset, -u  環境変数の値を指定せずにリセット
+      --no-proxy   マシンの IP アドレスに NO_PROXY 環境変数の追加
 
+.. sidebar:: 目次
+
+   .. contents:: 
+       :depth: 3
+       :local:
 
 .. docker-machine env machinename will print out export commands which can be run in a subshell. Running docker-machine env -u will print unset commands which reverse this effect.
 
-``docker-machine env マシン名`` を実行すると、サブシェル上で実行可能な ``export`` コマンドが表示されます。 ``docker-machine env -u`` を実行すると、この効果を無効化する ``unset`` コマンドを表示します。
+``docker-machine env マシン名`` を実行したら、サブシェル上で実行可能な ``export`` コマンドが表示されます。 ``docker-machine env -u`` を実行したら、この効果を無効化する ``unset`` コマンドを表示します。
 
 .. code-block:: bash
 
@@ -64,11 +63,11 @@ env
 
 .. The output described above is intended for the shells bash and zsh (if you’re not sure which shell you’re using, there’s a very good possibility that it’s bash). However, these are not the only shells which Docker Machine supports. Depending of the environment you’re running your command into we will print them for the proper system. We support bash, cmd, powershell and emacs.
 
-上記の出力は ``bash`` や ``zsh`` シェル上での実行を想定したものです（どのシェルを使っているか分からなければ、大抵の場合 ``bash`` でしょう）。しかし、Docker Machine がサポートしているシェルはこれだけではありません。どのようなコマンドを使うかは、それぞれの環境にあわせる必要があります。現時点では ``bash`` 、 ``cmd`` 、 ``powershell`` 、 ``emacs`` のシステムをサポートしています。
+上の出力は ``bash`` や ``zsh`` シェル上での実行を想定したものです（どのシェルを使っているか分からなくても、大抵の場合は ``bash`` でしょう）。しかし、Docker Machine がサポートしているシェルはこれだけではありません。どのようなコマンドを使うかは、それぞれの環境にあわせる必要があります。現時点では ``bash`` 、 ``cmd`` 、 ``powershell`` 、 ``emacs`` のシステムをサポートしています。
 
 .. If you are using fish and the SHELL environment variable is correctly set to the path where fish is located, docker-machine env name will print out the values in the format which fish expects:
 
-もし ``fish`` を使っており、 ``SHELL`` 環境変数が ``fish`` のパスを適切に設定しているのであれば、 ``docker-machine env マシン名`` を実行すると、 ``fish`` を想定した形式で値が表示されます。
+もし ``fish`` を使っており、 ``SHELL`` 環境変数が ``fish`` のパスを適切に設定しているのであれば、 ``docker-machine env マシン名`` を実行したら、 ``fish`` を想定した形式で値を表示します。
 
 .. code-block:: bash
 
@@ -138,7 +137,7 @@ env コマンドは ``--no-proxy`` フラグをサポートしています。こ
 
 .. You may also want to visit the documentation on setting HTTP_PROXY for the created daemon using the --engine-env flag for docker-machine create.
 
-また、 :ref:`設定ドキュメント <specifying-configuration-options-for-the-created-docker-engine>` から、 ``docker-machine create`` コマンド作成時に ``--engine-env`` フラグでデーモンの ``HTTP_PROXY`` を指定する方法も参考になるでしょう。
+また、 :ref:`create 用の設定ドキュメント <specifying-configuration-options-for-the-created-docker-engine>` では、 ``docker-machine create`` コマンドで作成時に ``--engine-env`` フラグでデーモンの ``HTTP_PROXY`` を指定する方法も参考になるでしょう。
 
 .. seealso:: 
 

@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/storagedriver/imagesandcontainers.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/storagedriver/imagesandcontainers.md
 .. check date: 2016/04/16
-.. Commits on Feb 18, 2016 a9c73b1a7ebe4ccd6893f37d2515be94000d081a
+.. Commits on May 14, 2016 d0ab1c360f5af7b92ab3f414e42ad817e0bd3059
 .. ---------------------------------------------------------------------------
 
 .. Understand images, containers, and storage driver
@@ -34,7 +34,7 @@
 
 .. Docker images are a series of read-only layers that are stacked on top of each other to form a single unified view. The first image in the stack is called a base image and all the other layers are stacked on top of this layer. The diagram below shows the Ubuntu 15:04 image comprising 4 stacked image layers.
 
-Docker イメージは読み込み専用（read-only）レイヤのセットです。それぞれのレイヤが層（スタック）として積み重なり、１つに統合された形に見えます。この１番めの層を *ベース・イメージ (base image)* と呼び、他の全てのレイヤは、このベース・イメージのレイヤ上に積み重なります。次の図は、 Ubuntu 15:04 イメージが４つのイメージ・レイヤを組みあわせて構成されているのが分かります。
+Docker イメージは読み込み専用（read-only）レイヤのセットです。それぞれのレイヤが層（スタック）として積み重なり、１つに統合された形に見えます。この１番めの層を *ベース・イメージ (base image)* と呼び、他の全てのレイヤは、このベース・イメージのレイヤ上に積み重なります。次の図は、 Ubuntu 15.04 イメージが４つのイメージ・レイヤを組みあわせて構成されているのが分かります。
 
 .. image:: ./images/image-layers.png
    :scale: 60%
@@ -63,7 +63,7 @@ Docker ストレージ・ドライバは、これらレイヤを積み重ねて�
 連想ストレージ
 ----------------------------------------
 
-.. Docker 1.10 introduced a new content addressable storage model. This is a completely new way to address image and layer data on disk. Previously, image and layer data was referenced and stored using a a randomly generated UUID. In the new model this is replaced by a secure content hash.
+.. Docker 1.10 introduced a new content addressable storage model. This is a completely new way to address image and layer data on disk. Previously, image and layer data was referenced and stored using a randomly generated UUID. In the new model this is replaced by a secure content hash.
 
 Docker 1.10 は、新しい連想（コンテント・アドレッサブル；content adressable）ストレージ・モデルを導入しました。これはイメージとレイヤをディスクで扱うための、全く新しい手法です。従来のイメージとレイヤのデータは、ランダムに生成した UUID を使って保管・参照していました。新しいモデルでは、これを安全な *コンテント・ハッシュ（content hash）* に置き換えます。
 
@@ -97,7 +97,7 @@ Docker 1.10 は、新しい連想（コンテント・アドレッサブル；co
 
 既存イメージとは、以前のバージョンの Docker で作成、あるいは取得したものです。これらは新しいモデルで使う前に、変換が必要です。以降時には、新しい安全なチェックサムを計算します。この計算は更新した Docker デーモンを初回起動時、自動的に行われます。移行が終わったら、全てのイメージとタグが新しい安全な ID に更新されます。
 
-.. Although the migration is automatic and transparent, it is computationally intensive. This means it and can take time if you have lots of image data. During this time your Docker daemon will not respond to other requests.
+.. Although the migration is automatic and transparent, it is computationally intensive. This means it can take time if you have lots of image data. During this time your Docker daemon will not respond to other requests.
 
 移行は自動的かつ透過的に行われますが、多くの計算を必要とします。つまり、イメージ・データが大量にあれば、時間がかかることを意味します。移行している間、Docker デーモンは他のリクエストに応答しません。
 
@@ -190,7 +190,7 @@ Unix の ``time`` コマンドを ``docker run`` コマンドより前に付け�
 
 .. コンテナとイメージとの主な違いは、書き込み可能なレイヤ（writable layer）です。全てのコンテナに対する書き込み、つまり、新しいファイルの追加や既存のデータに対する変更は、この書き込み可能なレイヤに保管されます。コンテナが書き込み可能なレイヤを削除すると、コンテナも削除されます。イメージは変更されないままです。
 
-.. Because each container has its own thin writable container layer and all data is stored this container layer, this means that multiple containers can share access to the same underlying image and yet have their own data state. The diagram below shows multiple containers sharing the same Ubuntu 15.04 image.
+.. Because each container has its own thin writable container layer and all data is stored in this container layer, this means that multiple containers can share access to the same underlying image and yet have their own data state. The diagram below shows multiple containers sharing the same Ubuntu 15.04 image.
 
 それぞれのコンテナは、自分自身で書き込み可能なレイヤを持ちますので、全てのデータは対象のコンテナレイヤに保管します。つまり、複数のコンテナが根底にあるイメージを共有アクセスすることができ、それぞれのコンテナ自身がデータをも管理できるのを意味します。次の図は複数のコンテナが同じ Ubuntu 15.04 イメージを共有しています。
 
@@ -464,7 +464,7 @@ Docker バージョン 1.10 未満までは、各レイヤをイメージ・レ�
 
 .. BTFS, ZFS, and other drivers handle the copy-on-write differently. You can read more about the methods of these drivers later in their detailed descriptions.
 
-BTFS、ZFS 、その他のドライバは、コピー・オン・ライトを異なった方法で処理します。これらのドライバの手法については、後述するそれぞれの詳細説明をご覧ください。
+BTRFS、ZFS 、その他のドライバは、コピー・オン・ライトを異なった方法で処理します。これらのドライバの手法については、後述するそれぞれの詳細説明をご覧ください。
 
 .. Containers that write a lot of data will consume more space than containers that do not. This is because most write operations consume new space in the containers thin writable top layer. If your container needs to write a lot of data, you can use a data volume.
 

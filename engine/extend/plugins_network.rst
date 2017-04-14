@@ -19,7 +19,7 @@ Docker ネットワーク・プラグイン
 
 .. Docker network plugins enable Docker deployments to be extended to support a wide range of networking technologies, such as VXLAN, IPVLAN, MACVLAN or something completely different. Network driver plugins are supported via the LibNetwork project. Each plugin is implemented asa “remote driver” for LibNetwork, which shares plugin infrastructure with Docker. Effectively, network driver plugins are activated in the same way as other plugins, and use the same kind of protocol.
 
-Docker ネットワーク・プラグインは、Docker が広範囲のネットワーク技術のサポートによりデプロイできるように拡張されています。XVLAN、IPVLAN、MACVLAN 、あるいはこれらとも全く異なります。ネットワーク・ドライバ・プラグインは LibNetwork プロジェクトによってサポートされています。各ネットワーク・プラグインは LibNetwork の「リモート・ドライバ」であり、これは Docker とプラグイン基盤を共有するものです。効果的なのは、プラグイン基盤の共有によって、他のプラグインを同じように扱え、かつ同様のプロトコルを扱えることです。
+Docker ネットワーク・プラグインは、Docker が広範囲のネットワーク技術のサポートによりデプロイできるように拡張されています。VXLAN、IPVLAN、MACVLAN 、あるいはこれらとも全く異なります。ネットワーク・ドライバ・プラグインは LibNetwork プロジェクトによってサポートされています。各ネットワーク・プラグインは LibNetwork の「リモート・ドライバ」であり、これは Docker とプラグイン基盤を共有するものです。効果的なのは、プラグイン基盤の共有によって、他のプラグインを同じように扱え、かつ同様のプロトコルを扱えることです。
 
 .. Using network driver plugins
 
@@ -34,7 +34,7 @@ Docker ネットワーク・プラグインは、Docker が広範囲のネット
 
 .. Once running however, network driver plugins are used just like the built-in network drivers: by being mentioned as a driver in network-oriented Docker commands. For example,
 
-ネットワーク・ドライバを実行しても、内蔵のネットワーク・ドライバのように扱えないかもしれません。ネットワーク対応の Docker コマンドでドライバを操作します。例えば、次のようなコマンドです。
+ネットワーク・ドライバを実行しても、内部ネットワーク・ドライバのように扱えないかもしれません。ネットワーク対応の Docker コマンドでドライバを操作します。例えば、次のようなコマンドです。
 
 .. code-block:: bash
 

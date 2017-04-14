@@ -1,9 +1,9 @@
 ﻿.. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/userguide/containers/dockerimages/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/userguide/containers/dockerimages.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/userguide/containers/dockerimages.md
-.. check date: 2016/04/16
+.. check date: 2016/06/13
 .. Commits on a Mar 4, 2016 69004ff67eed6525d56a92fdc69466c41606151a
 .. ----------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ Docker はダウンロードしたイメージを Docker ホスト上に保管�
 
 .. If instead you wanted to run an Ubuntu 12.04 image you’d use:
 
-あるいは Ubuntu 14.04 イメージを使いたい場合は、次のようにします。
+あるいは Ubuntu 12.04 イメージを使いたい場合は、次のようにします。
 
 .. code-block:: bash
 

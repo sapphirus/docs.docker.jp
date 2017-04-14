@@ -1,10 +1,10 @@
 ﻿.. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/admin/formatting/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/admin/formatting.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/admin/formatting.md
-.. check date: 2016/04/17
-.. Commits on Mar 10, 2016 8514880997bd1bc944769dcc41e52307bb01f7ff
+.. check date: 2016/07/09
+.. Commits on Jun 22, 2016 01f9cbc3663cf134ca427e4f8b98bba637f6655e
 .. ---------------------------------------------------------------------------
 
 .. Formatting reference

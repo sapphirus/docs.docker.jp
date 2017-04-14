@@ -1,10 +1,10 @@
 .. -*- coding: utf-8 -*-
 .. URL: https://docs.docker.com/engine/reference/commandline/volume_create/
 .. SOURCE: https://github.com/docker/docker/blob/master/docs/reference/commandline/volume_create.md
-   doc version: 1.11
+   doc version: 1.12
       https://github.com/docker/docker/commits/master/docs/reference/commandline/volume_create.md
-.. check date: 2016/04/28
-.. Commits on Mar 26, 2016 995e5beda74b99dfc920f6a79aee977ff5a15a72
+.. check date: 2016/06/16
+.. Commits on Jun 14, 2016 8eca8089fa35f652060e86906166dabc42e556f8
 .. -------------------------------------------------------------------
 
 .. volume create
@@ -13,23 +13,25 @@
 volume create
 =======================================
 
+.. code-block:: bash
+
+   使い方: docker volume create [オプション]
+   
+   ボリュームを作成
+   
+     -d, --driver=local    ボリューム・ドライバ名を指定
+     --help                使い方の表示
+     --label=[]            ボリューム用のメタデータを指定
+     --name=               ボリューム名を指定
+     -o, --opt=map[]       ドライバ固有のオプションを指定
+
+
 .. sidebar:: 目次
 
    .. contents:: 
        :depth: 3
        :local:
 
-.. code-block:: bash
-
-   Usage: docker volume create [OPTIONS]
-   
-   Create a volume
-   
-     -d, --driver=local    Specify volume driver name
-     --help                Print usage
-     --label=[]            Set metadata for a volume
-     --name=               Specify volume name
-     -o, --opt=map[]       Set driver specific options
 
 .. Creates a new volume that containers can consume and store data in. If a name is not specified, Docker generates a random name. You create a volume and then configure the container to use it, for example:
 
@@ -44,7 +46,7 @@ volume create
 
 .. The mount is created inside the container’s /world directory. Docker does not support relative paths for mount points inside the container.
 
-これはコンテナ内の ``/world`` ディレクトリにマウントが作成されます。Docker はコンテナ内のマウントポイントに、相対パスの指定をサポートしません。
+これはコンテナ内の ``/world`` ディレクトリにマウントを作成します。Docker はコンテナ内のマウントポイントに、相対パスの指定をサポートしません。
 
 .. Multiple containers can use the same volume in the same time period. This is useful if two containers need access to shared data. For example, if one container writes and the other reads the data.
 
